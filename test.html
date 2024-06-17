@@ -1,0 +1,58 @@
+<!--
+<balise>Toto</balise>
+<adresse>
+  <voie numero="6">rue rougemont</voie>
+  <ville cp="75009">Paris</ville>
+</adresse>
+
+-->
+<form action="pageCible.html" method="GET">
+  <input type="hidden" name="id" value="15"/>
+
+  <label for="login">Login</label>
+    <input type="text" id="login" value="Jordan" name="login"/>
+  <label for="password">Password</label>
+    <input type="password" id="password" name="password"/>
+
+    <input type="submit" value="Se connecter"/>
+    <input type="reset"/>
+</form>
+
+
+
+
+
+
+<demo attribut=""/>
+<script>
+
+var personne1 =
+{
+  "prenom":"Jordan",
+  "nom":"Abid"
+}
+
+var bigblue = [personne1,{"prenom":"John","nom":"Doe"},{"prenom":"Jane","nom":"Doe"}];
+
+
+for(let i =0;i<bigblue.length;i++)
+{
+  console.log(bigblue[i]);
+}
+
+for(let index in bigblue)
+{
+  console.log(bigblue[index]);
+}
+
+for(let p of bigblue)
+{
+  console.log(p);
+}
+
+
+document.getElementById("login").style.color="red";
+login.style.color="blue";
+
+
+</script>

@@ -14,9 +14,8 @@ import netfilm.model.Acteur;
 @WebServlet("/demo")
 public class DemoServlet extends HttpServlet {
 
-     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+			
 		Integer id = Integer.parseInt(request.getParameter("id"));
 		
 		Acteur acteur = Singleton.getInstance().getDaoActeur().findById(id);

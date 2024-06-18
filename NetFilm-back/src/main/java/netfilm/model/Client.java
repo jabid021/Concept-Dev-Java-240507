@@ -9,6 +9,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class Client extends Compte{
 
+	private String nom;
+	private String prenom;
+	
 	@Enumerated(EnumType.STRING)
 	private Civilite civilite;
 	
@@ -20,16 +23,20 @@ public class Client extends Compte{
 	
 	public Client() {}
 	
-	public Client(Integer id, String login, String password,Civilite civilite,Adresse adresse) {
+	public Client(Integer id, String login, String password,String prenom,String nom,Civilite civilite,Adresse adresse) {
 		super(id, login, password);
 		this.adresse=adresse;
 		this.civilite=civilite;
+		this.prenom=prenom;
+		this.nom=nom;
 	}
 
-	public Client(String login, String password,Civilite civilite,Adresse adresse) {
+	public Client(String login, String password,String prenom,String nom,Civilite civilite,Adresse adresse) {
 		super(login, password);
 		this.adresse=adresse;
 		this.civilite=civilite;
+		this.prenom=prenom;
+		this.nom=nom;
 	}
 
 	public Civilite getCivilite() {
@@ -56,6 +63,23 @@ public class Client extends Compte{
 		this.facture = facture;
 	}
 
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	
 	
 	
 	

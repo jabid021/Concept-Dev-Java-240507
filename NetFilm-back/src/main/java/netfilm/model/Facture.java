@@ -26,15 +26,17 @@ public class Facture {
 	
 	public Facture() {} 
 	
-	public Facture(Integer id, double prix, boolean valide) {
+	public Facture(Integer id, double prix, boolean valide,Client client) {
 		this.id = id;
 		this.prix = prix;
 		this.valide = valide;
+		this.client=client;
 	}
 	
-	public Facture(double prix, boolean valide) {
+	public Facture(double prix, boolean valide,Client client) {
 		this.prix = prix;
 		this.valide = valide;
+		this.client=client;
 	}
 
 	public Integer getId() {

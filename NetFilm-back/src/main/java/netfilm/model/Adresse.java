@@ -55,6 +55,11 @@ public class Adresse {
 	public void setCp(String cp) {
 		this.cp = cp;
 	}
+
+	@Override
+	public String toString() {
+		return "Adresse [numero=" + numero + ", voie=" + voie + ", ville=" + ville + ", cp=" + cp + "]";
+	}
 	
 	
 }

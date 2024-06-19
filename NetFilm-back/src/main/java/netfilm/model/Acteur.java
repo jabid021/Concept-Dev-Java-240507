@@ -78,6 +78,13 @@ public class Acteur {
 	public void setFigurations(List<Role> figurations) {
 		this.figurations = figurations;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Acteur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", figurations="
+				+ figurations + "]";
+	}
 	
 	
 	

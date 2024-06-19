@@ -79,6 +79,12 @@ public class Client extends Compte{
 		this.prenom = prenom;
 	}
 
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
+				+ prenom + ", civilite=" + civilite + ", adresse=" + adresse + ", facture=" + facture + "]";
+	}
+
 	
 	
 	

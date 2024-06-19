@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import netfilm.context.Singleton;
+import netfilm.model.Admin;
+import netfilm.model.Client;
 import netfilm.model.Compte;
 
 public class DAOCompte implements IDAOCompte {
@@ -43,6 +45,22 @@ public class DAOCompte implements IDAOCompte {
 		em.remove(compte);
 		em.getTransaction().commit();
 		em.close();
+	}
+
+	@Override
+	public List<Client> findAllClient() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Client> clients = em.createQuery("FROM Client").getResultList();
+		em.close();
+		return clients;
+	}
+	
+	@Override
+	public List<Admin> findAllAdmin() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Admin> admins = em.createQuery("FROM Admin").getResultList();
+		em.close();
+		return admins;
 	}
 
 }

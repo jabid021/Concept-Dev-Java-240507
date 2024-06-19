@@ -11,7 +11,11 @@
 
 <h1>Liste des clients</h1>
 
-<p>Tableau (findall) à faire plus tard</p>
+<p>
+
+${clients}
+
+</p>
 
 
 <form action="client" method="POST">

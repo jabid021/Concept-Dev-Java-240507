@@ -1,6 +1,7 @@
 package netfilm.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,32 +13,34 @@ import netfilm.context.Singleton;
 import netfilm.model.Adresse;
 import netfilm.model.Civilite;
 import netfilm.model.Client;
-import netfilm.model.Facture;
+import netfilm.model.Compte;
 
 
 @WebServlet("/client")
 public class ClientController extends HttpServlet {
 				
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*
-		 if(id==null)
+		
+		 if(request.getParameter("id")==null)
 		 {
-		 	findAll();
+		 	List<Client> clients = Singleton.getInstance().getDaoCompte().findAllClient();
+		 	request.setAttribute("clients", clients);
+		 	this.getServletContext().getRequestDispatcher("/clients.jsp").forward(request, response);
 		 }
 		 else
 		 {
-		 	if(delete != null)
+		 	/*if(delete != null)
 		 	{
 		 		//delete
 		 	}
 		 	else
 		 	{
 		 		//findById	
-		 	}
+		 	}*/
 		 }
 		 
 		 
-		*/
+		
 	}
 
 
@@ -57,7 +60,8 @@ public class ClientController extends HttpServlet {
 			 
 			 Client client  = new Client(login,password,prenom,nom,Civilite.valueOf(civilite),new Adresse(numero,voie,ville,cp));
 			 Singleton.getInstance().getDaoCompte().save(client);
-			 System.out.println("SAVE DU CLIENT EN BDD");
+			 
+			 response.sendRedirect("client");
 		}
 		else
 		{

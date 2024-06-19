@@ -8,7 +8,7 @@ import netfilm.context.Singleton;
 
 
 @WebListener
-public class startTomcatListener implements ServletContextListener {
+public class StartTomcatListener implements ServletContextListener {
 
 	public void contextInitialized(ServletContextEvent sce)  { 
 		try {

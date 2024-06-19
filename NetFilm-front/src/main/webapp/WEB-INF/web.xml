@@ -4,4 +4,17 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
+  
+  
+  <jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<!--Pour include une page en haut de toutes nos jsp : -->
+			<include-prelude>/includes.jsp</include-prelude>
+			<!--Pour include une page en bas de toutes nos jsp : 
+			<include-coda>footer.jsp</include-coda> -->
+		</jsp-property-group>
+	</jsp-config>
+  
+  
 </web-app>

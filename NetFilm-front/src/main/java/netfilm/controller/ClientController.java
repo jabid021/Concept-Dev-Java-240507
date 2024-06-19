@@ -25,18 +25,25 @@ public class ClientController extends HttpServlet {
 		 {
 		 	List<Client> clients = Singleton.getInstance().getDaoCompte().findAllClient();
 		 	request.setAttribute("clients", clients);
+			request.setAttribute("civilites", Civilite.values());
 		 	this.getServletContext().getRequestDispatcher("/clients.jsp").forward(request, response);
 		 }
 		 else
 		 {
-		 	/*if(delete != null)
+		 	if(request.getParameter("delete") != null)
 		 	{
-		 		//delete
+		 		Integer id= Integer.parseInt(request.getParameter("id"));
+		 		Singleton.getInstance().getDaoCompte().delete(id);
+		 		response.sendRedirect("client");
 		 	}
 		 	else
 		 	{
-		 		//findById	
-		 	}*/
+		 		Integer id= Integer.parseInt(request.getParameter("id"));
+		 		Client client = (Client) Singleton.getInstance().getDaoCompte().findById(id);
+		 		request.setAttribute("client", client);
+		 		request.setAttribute("civilites", Civilite.values());
+		 		this.getServletContext().getRequestDispatcher("/updateClient.jsp").forward(request, response);
+		 	}
 		 }
 		 
 		 
@@ -65,7 +72,21 @@ public class ClientController extends HttpServlet {
 		}
 		else
 		{
-			//save(update)
+			 Integer id= Integer.parseInt(request.getParameter("id"));
+			 String login = request.getParameter("login");
+			 String password = request.getParameter("password");
+			 String prenom = request.getParameter("prenom");
+			 String nom = request.getParameter("nom");
+			 String civilite = request.getParameter("civilite");
+			 String numero = request.getParameter("adresse.numero");
+			 String voie = request.getParameter("adresse.voie");
+			 String ville = request.getParameter("adresse.ville");
+			 String cp = request.getParameter("adresse.cp");
+			 
+			 Client client  = new Client(id,login,password,prenom,nom,Civilite.valueOf(civilite),new Adresse(numero,voie,ville,cp));
+			 Singleton.getInstance().getDaoCompte().save(client);
+			 
+			 response.sendRedirect("client");
 		}
 	
 	}

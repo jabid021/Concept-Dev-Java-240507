@@ -2,4 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>quest-front</display-name>
   
+    <jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<!--Pour include une page en haut de toutes nos jsp : -->
+			<include-prelude>/WEB-INF/includes.jsp</include-prelude>
+			<!--Pour include une page en bas de toutes nos jsp : 
+			<include-coda>footer.jsp</include-coda> -->
+		</jsp-property-group>
+	</jsp-config>
+	
 </web-app>

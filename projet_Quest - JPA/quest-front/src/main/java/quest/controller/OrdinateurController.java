@@ -21,9 +21,9 @@ public class OrdinateurController extends HttpServlet {
 
 		if (request.getParameter("id") == null) {
 			List<Ordinateur> ordinateurs = Singleton.getInstance().getDaoOrdinateur().findAll();
-			List<Stagiaire> stagiaires = Singleton.getInstance().getDaoStagiaire().findAll();
+			List<Stagiaire> stagiaires = Singleton.getInstance().getDaoStagiaire().findAllWithoutOrdinateur();
 			request.setAttribute("stagiaires", stagiaires);
-
+			stagiaires.stream().filter((stagiaire)->stagiaire.getOrdinateur()==null).forEach(System.out::println);
 			request.setAttribute("ordinateurs", ordinateurs);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/ordinateurs.jsp").forward(request, response);
 		} else {

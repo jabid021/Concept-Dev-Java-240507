@@ -36,6 +36,7 @@
 		</core:forEach>
 
 	</table>
+	
 
 	<form action="ordinateur" method="POST">
 		Marque : <input required="required" type="text" name="marque" placeholder="Saisir marque" /><br>
@@ -48,7 +49,7 @@
 			</core:forEach>
 		</select>
 		<br>
-		<input type="submit" class="btn btn-success" value="Ajouter Stagiaire">
+		<input type="submit" class="btn btn-success" value="Ajouter Ordinateur">
 	</form>
 
 </main>

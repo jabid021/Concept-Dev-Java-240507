@@ -47,4 +47,13 @@ public class DAOStagiaire implements IDAOStagiaire{
 		em.close();	
 	}
 
+	@Override
+	public List<Stagiaire> findAllWithoutOrdinateur() {
+EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		
+		List<Stagiaire> stagiaires = em.createQuery("from Stagiaire as stagiaire where stagiaire.ordinateur is empty").getResultList();
+		em.close();
+		return stagiaires;
+	}
+	
 }

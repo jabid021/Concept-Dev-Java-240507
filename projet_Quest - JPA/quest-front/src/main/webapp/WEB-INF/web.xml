@@ -7,5 +7,4 @@
       <include-prelude>/WEB-INF/includes.jsp</include-prelude>
     </jsp-property-group>
   </jsp-config>
-  
 </web-app>

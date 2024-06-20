@@ -5,8 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Gestion des clients</title>
+<title>Gestion des stagiaires</title>
 </head>
 <body>
 <main class="container">
@@ -53,8 +52,12 @@
       Prenom :<input name="prenom" type="text" placeholder="Saisir votre prenm"><br>
       Email :<input name="email" type="email" placeholder="Saisir votre email"><br>
       Filiere
-      <select name="filiere">
-        <option value="1" >1 - DIS-399-SOPRA-JAVA</option>
+      <select required="required" name="filiere.id">
+      <option value="">Choisir un client</option>
+      <core:forEach items="${filieres}" var="filiere">
+        <option value="1" >${filiere.id} - ${filiere.libelle}</option>
+        </core:forEach>
+        
       </select><br>
       <input class ="btn btn-success" type="submit" value="Ajouter">
     </form>
@@ -70,6 +73,7 @@
   }
 
 </script>
+
 </main>
 </body>
 </html>

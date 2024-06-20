@@ -24,7 +24,19 @@ public class FiliereController extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/WEB-INF/filieres.jsp").forward(request, response);		
 		}
 		else {
-			
+			if(request.getParameter("delete") != null)
+		 	{
+		 		Integer id= Integer.parseInt(request.getParameter("id"));
+		 		Singleton.getInstance().getDaoFiliere().delete(id);
+		 		response.sendRedirect("filiere");
+		 	}
+		 	else
+		 	{
+		 		Integer id= Integer.parseInt(request.getParameter("id"));
+		 		Filiere filiere = (Filiere) Singleton.getInstance().getDaoFiliere().findById(id);
+		 		request.setAttribute("filiere", filiere);
+		 		this.getServletContext().getRequestDispatcher("/WEB-INF/updateFiliere.jsp").forward(request, response);
+		 	}
 		}
 	}
 	
@@ -41,6 +53,17 @@ public class FiliereController extends HttpServlet {
 			 
 			 response.sendRedirect("filiere");
 			}
+		 else {
+			 Integer id = Integer.parseInt(request.getParameter("id"));
+			 String libelle = request.getParameter("libelle");
+			 LocalDate debut = LocalDate.parse(request.getParameter("debut"));
+			 LocalDate fin = LocalDate.parse(request.getParameter("fin"));
+			 
+			 Filiere filiere = new Filiere(id,libelle,debut,fin);
+			 Singleton.getInstance().getDaoFiliere().save(filiere);
+			 
+			 response.sendRedirect("filiere");
+		 }
 	}
 	
 }

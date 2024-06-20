@@ -8,8 +8,7 @@
 </head>
 <body>
 
-	<nav
-		class="navbar navbar-expand-lg fixed-top navbar-dark sticky-top bg-primary">
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark sticky-top bg-primary">
 		<div class="container-fluid">
 			<a class="navbar-brand"> <img src="assets/medias/netflix.png" width="36" alt="Logo" /> Net Formation </a>
 			<form class="d-flex" role="search">

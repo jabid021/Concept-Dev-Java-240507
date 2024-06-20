@@ -13,11 +13,11 @@
 				value="com.mysql.jdbc.Driver" />
 				
 			<property name="hibernate.connection.url"
-				value="jdbc:mysql://localhost:3307/quest_jsp" />
+				value="jdbc:mysql://localhost:3306/quest_jsp" />
 				
-			<property name="hibernate.connection.user" value="eclipse" />
+			<property name="hibernate.connection.user" value="root" />
 			
-			<property name="hibernate.connection.password" value="eclipse" />
+			<property name="hibernate.connection.password" value="" />
 				
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL5InnoDBDialect" />

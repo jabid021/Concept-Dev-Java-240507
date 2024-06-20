@@ -26,7 +26,7 @@ public class ClientController extends HttpServlet {
 		 	List<Client> clients = Singleton.getInstance().getDaoCompte().findAllClient();
 		 	request.setAttribute("clients", clients);
 			request.setAttribute("civilites", Civilite.values());
-		 	this.getServletContext().getRequestDispatcher("/clients.jsp").forward(request, response);
+		 	this.getServletContext().getRequestDispatcher("/WEB-INF/clients.jsp").forward(request, response);
 		 }
 		 else
 		 {
@@ -42,7 +42,7 @@ public class ClientController extends HttpServlet {
 		 		Client client = (Client) Singleton.getInstance().getDaoCompte().findById(id);
 		 		request.setAttribute("client", client);
 		 		request.setAttribute("civilites", Civilite.values());
-		 		this.getServletContext().getRequestDispatcher("/updateClient.jsp").forward(request, response);
+		 		this.getServletContext().getRequestDispatcher("/WEB-INF/updateClient.jsp").forward(request, response);
 		 	}
 		 }
 		 

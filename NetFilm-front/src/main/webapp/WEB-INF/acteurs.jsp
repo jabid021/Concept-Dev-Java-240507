@@ -19,8 +19,6 @@ ${acteurs}
 
 </p>
 
-
-
 <form action="acteur" method="POST">
 	Prenom : <input type="text" name="prenom" placeholder="Saisir prenom"/><br>
 	Nom : <input type="text" name="nom" placeholder="Saisir nom"/><br>

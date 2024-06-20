@@ -25,7 +25,7 @@ public class ActeurController extends HttpServlet {
 		 {
 		 	List<Acteur> acteurs = Singleton.getInstance().getDaoActeur().findAll();
 		 	request.setAttribute("acteurs", acteurs);
-		 	this.getServletContext().getRequestDispatcher("/acteurs.jsp").forward(request, response);
+		 	this.getServletContext().getRequestDispatcher("/WEB-INF/acteurs.jsp").forward(request, response);
 		 }
 		 else
 		 {

@@ -4,11 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Modifier facture</title>
+<title>Insert title here</title>
 </head>
 <body>
 
-<p>${facture.id} ${facture.prix}€ ${facture.valide} ${facture.client.prenom} ${facture.client.nom} ${facture.client.adresse}
+
+
+<core:forEach begin="0" end="10" step="1" var="i">
+	${i}
+</core:forEach>
 
 </body>
 </html>

@@ -9,9 +9,9 @@
 </head>
 <body>
 <br><br><br><br><br><br><br>
-<h1>Error 404....Where am I ???<a href="client">Retour à  l'accueil</a></h1>
+<h1>Error 404....Where am I ???<a href="index.html">Retour à  l'accueil</a></h1>
 
-<img src="404.gif" alt="errorGif">
+<img src="/assets/image/404.gif" alt="errorGif">
 
 </body>
 </html>

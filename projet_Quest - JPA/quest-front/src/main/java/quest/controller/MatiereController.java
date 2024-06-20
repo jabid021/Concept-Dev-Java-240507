@@ -18,6 +18,9 @@ import quest.model.Matiere;
 public class MatiereController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("MatiereController");
+		
 		if(request.getParameter("id")==null)
 		 {
 		 	List<Matiere> matieres = Singleton.getInstance().getDaoMatiere().findAll();

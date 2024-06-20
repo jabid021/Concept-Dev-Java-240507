@@ -4,7 +4,7 @@
 <div id="content">
 <h1>Liste des Matieres</h1>
      <input id="btnAddMatiere" type="button" class ="btn btn-success" value="Ajouter">
-     <a href="index.html"><input type="button" class ="btn btn-info" value="Retour"></a>
+     <a href="index.jsp"><input type="button" class ="btn btn-info" value="Retour"></a>
 
      <table class="table table-striped">
        <thead>
@@ -16,30 +16,17 @@
            </tr>
        </thead>
        <tbody>
-         <tr>
-           <td>1</td>
-           <td>Algo avec Java</td>
-           <td>7245</td>
-           <td>
-             <a href="matiere?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-             <a href="matiere?id=1&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-           </td>
-         </tr>
-
-         <tr>
-           <td>2</td>
-           <td>SQL</td>
-           <td>4352</td>
-           <td>
-             <a href="matiere?id=2"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-              <a href="matiere?id=2&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-           </td>
-         </tr>
+   
+       <core:forEach items="${matieres}" var="matiere">
+			<tr>
+				<td>${matiere.id}</td>
+				<td>${matiere.libelle}</td>
+				<td>${matiere.quest}</td>
+				<td><a href="matiere?id=${matiere.id}" class="btn btn-warning me-2">Modifier</a> <a href="matiere?id=${matiere.id}&delete" class="btn btn-danger me-2">Supprimer</a> </td>
+			</tr>
+		</core:forEach>
        </tbody>
      </table>
-
-
-
 
 
      <div id="addFormMatiere" class="formAjout">

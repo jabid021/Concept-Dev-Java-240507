@@ -12,6 +12,6 @@
 
 
     <input class ="btn btn-warning" type="submit" value="Modifier">
-    <a href="matieres.html"><input type="button" class ="btn btn-info" value="Retour"></a>
+    <a href="matiere"><input type="button" class ="btn btn-info" value="Retour"></a>
   </form>
 </div>

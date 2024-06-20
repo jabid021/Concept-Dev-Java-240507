@@ -28,7 +28,7 @@ public class FiliereController extends HttpServlet {
 				response.sendRedirect("filiere");
 			} else {
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Filiere filiere = (Filiere) Singleton.getInstance().getDaoFiliere().findById(id);
+				Filiere filiere = Singleton.getInstance().getDaoFiliere().findById(id);
 				request.setAttribute("filiere", filiere);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/updateFiliere.jsp").forward(request, response);
 			}
@@ -51,10 +51,8 @@ public class FiliereController extends HttpServlet {
 			LocalDate debut = LocalDate.parse(request.getParameter("debut"));
 			LocalDate fin = LocalDate.parse(request.getParameter("fin"));
 
-			Filiere filiere = new Filiere(libelle, debut, fin);
+			Filiere filiere = new Filiere(id, libelle, debut, fin);
 			Singleton.getInstance().getDaoFiliere().save(filiere);
-
-			response.sendRedirect("filiere");
 
 			response.sendRedirect("filiere");
 		}

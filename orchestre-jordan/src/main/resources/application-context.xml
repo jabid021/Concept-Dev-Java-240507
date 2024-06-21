@@ -39,8 +39,11 @@
   		<bean name="flutisteBis" class="orchestre.model.Flutiste">
 			<property name="flute" ref="flute"/>
   		</bean>
-  	-->
-
+  
+  	
+  	
+  	 <context:component-scan base-package="orchestre.model"/>
+	-->
 </beans>
 
 

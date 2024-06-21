@@ -1,7 +1,3 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
-
-
 <div id="content">
 <h1>Liste des Filieres</h1>
      <input id="btnAddFiliere" type="button" class ="btn btn-success" value="Ajouter">
@@ -18,16 +14,19 @@
            </tr>
        </thead>
        <tbody>
-         <tr>
-           <td>1</td>
-           <td>DIS-399-SOPRA-JAVA</td>
-           <td>2022-10-25</td>
-           <td>2023-01-20</td>
+       <core:forEach items="${filieres}" var="filiere">
+       	<tr>
+           <td>${filiere.id}</td>
+           <td>${filiere.libelle}</td>
+           <td>${filiere.debut}</td>
+           <td>${filiere.fin}</td>
            <td>
-             <a href="filiere?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-             <a href="filiere?id=1&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
+             <a href="filiere?id=${filiere.id}"><input type="button" class ="btn btn-warning" value="Modifier"></a>
+             <a href="filiere?id=${filiere.id}&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
            </td>
          </tr>
+       </core:forEach>
+         
        </tbody>
      </table>
 

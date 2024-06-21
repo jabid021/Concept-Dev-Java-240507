@@ -1,7 +1,3 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<link rel="stylesheet" href="style.css">
-
-
 <div id="content">
   <h1>Liste des Stagiaires</h1>
   <input id="btnAddStagiaire" type="button" class ="btn btn-success" value="Ajouter">
@@ -19,29 +15,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Abid</td>
-        <td>Jordan</td>
-        <td>jordanabid@gmail.com</td>
-        <td>1 - DIS-399-SOPRA-JAVA</td>
+    <core:forEach items="${stagiaires}" var="stagiaire">
+     <tr>
+        <td>${stagiaire.id}</td>
+        <td>${stagiaire.nom}</td>
+        <td>${stagiaire.prenom}</td>
+        <td>${stagiaire.email}</td>
+        <td>${stagiaire.filiere.id} - ${stagiaire.filiere.libelle}</td>
         <td>
-          <a href="stagiaire?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-          <a href="stagiaire?id=1&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
+          <a href="stagiaire?id=${stagiaire.id}"><input type="button" class ="btn btn-warning" value="Modifier"></a>
+          <a href="stagiaire?id=${stagiaire.id}&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
         </td>
       </tr>
-
-      <tr>
-        <td>2</td>
-        <td>Doe</td>
-        <td>John</td>
-        <td>jdoe@gmail.com</td>
-        <td>1 - DIS-399-SOPRA-JAVA</td>
-        <td>
-          <a href="stagiaire?id=2"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-          <a href="stagiaire?id=2&delete">  <input type="button" class ="btn btn-danger" value="Supprimer"></a>
-        </td>
-      </tr>
+    </core:forEach>
+ 
     </tbody>
   </table>
 
@@ -56,8 +43,11 @@
       Prenom :<input name="prenom" type="text" placeholder="Saisir votre prenm"><br>
       Email :<input name="email" type="email" placeholder="Saisir votre email"><br>
       Filiere
-      <select name="filiere">
-        <option value="1" >1 - DIS-399-SOPRA-JAVA</option>
+      <select name="filiere.id">
+      <core:forEach items="${filieres}" var="filiere">
+       	<option value="${filiere.id}" >${filiere.id} - ${filiere.libelle}</option>
+      </core:forEach>
+       
       </select><br>
       <input class ="btn btn-success" type="submit" value="Ajouter">
     </form>

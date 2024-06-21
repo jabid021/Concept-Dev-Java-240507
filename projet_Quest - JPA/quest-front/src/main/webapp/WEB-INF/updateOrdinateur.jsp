@@ -8,7 +8,14 @@
   Stagiaire
     <select name="stagiaire.id">
     <core:forEach items="${stagiaires}" var="stagiaire">
-        <option selected value="${stagiaire.id}" >${stagiaire.id} - ${stagiaire.prenom} ${stagiaire.nom}</option>
+    	<core:choose>
+    		<core:when test="${stagiaire.id==ordinateur.stagiaire.id}">
+    			<option selected value="${stagiaire.id}" >${stagiaire.id} - ${stagiaire.prenom} ${stagiaire.nom}</option>
+    		</core:when>
+    		<core:otherwise>
+    			<option  value="${stagiaire.id}" >${stagiaire.id} - ${stagiaire.prenom} ${stagiaire.nom}</option>
+    		</core:otherwise>
+    	</core:choose>
     </core:forEach>
     </select><br>
 

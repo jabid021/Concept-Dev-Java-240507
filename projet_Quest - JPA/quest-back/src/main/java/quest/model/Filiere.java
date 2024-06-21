@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name="filiere")
@@ -17,6 +18,9 @@ public class Filiere {
 	private String libelle;
 	private LocalDate debut;
 	private LocalDate fin;
+	
+	@Version
+	private int version;
 	
 	public Filiere() {}
 	
@@ -63,6 +67,16 @@ public class Filiere {
 
 	public void setFin(LocalDate fin) {
 		this.fin = fin;
+	}
+
+	
+	
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
 	@Override

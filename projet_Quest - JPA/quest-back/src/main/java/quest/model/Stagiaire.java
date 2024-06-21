@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +22,9 @@ public class Stagiaire {
 	@ManyToOne
 	@JoinColumn(name="filiere")
 	private Filiere filiere;
+	
+	@OneToOne(mappedBy = "stagiaire")
+	private Ordinateur ordinateur;
 	
 	public Stagiaire() {
 	}
@@ -78,6 +82,15 @@ public class Stagiaire {
 
 	public void setFiliere(Filiere filiere) {
 		this.filiere = filiere;
+	}
+	
+
+	public Ordinateur getOrdinateur() {
+		return ordinateur;
+	}
+
+	public void setOrdinateur(Ordinateur ordinateur) {
+		this.ordinateur = ordinateur;
 	}
 
 	@Override

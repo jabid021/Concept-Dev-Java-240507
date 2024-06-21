@@ -22,7 +22,7 @@ public class OrdinateurController extends HttpServlet {
 		 if(request.getParameter("id")==null)
 		 {
 		 	List<Ordinateur> ordinateurs = Singleton.getInstance().getDaoOrdinateur().findAll();
-		 	List<Stagiaire> stagiaires = Singleton.getInstance().getDaoStagiaire().findAll();
+		 	List<Stagiaire> stagiaires = Singleton.getInstance().getDaoStagiaire().findAllDisponibles();
 		 	request.setAttribute("ordinateurs", ordinateurs);
 		 	request.setAttribute("stagiaires", stagiaires);
 		 	this.getServletContext().getRequestDispatcher("/WEB-INF/ordinateurs.jsp").forward(request, response);
@@ -39,7 +39,7 @@ public class OrdinateurController extends HttpServlet {
 		 	{
 		 		Integer id= Integer.parseInt(request.getParameter("id"));
 		 		Ordinateur ordinateur = Singleton.getInstance().getDaoOrdinateur().findById(id);
-		 		List<Stagiaire> stagiaires = Singleton.getInstance().getDaoStagiaire().findAll();
+		 		List<Stagiaire> stagiaires = Singleton.getInstance().getDaoStagiaire().findAllDisponibles();
 		 		request.setAttribute("ordinateur", ordinateur);
 		 		request.setAttribute("stagiaires", stagiaires);
 		 		this.getServletContext().getRequestDispatcher("/WEB-INF/updateOrdinateur.jsp").forward(request, response);

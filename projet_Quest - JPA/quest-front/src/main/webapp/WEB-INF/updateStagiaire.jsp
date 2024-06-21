@@ -9,7 +9,7 @@
   Filiere
     <select name="filiere.id">
     <core:forEach items="${filieres}" var="filiere">
-   	 <option selected value="${filiere.id}" >${filiere.id} - ${filiere.libelle}</option>
+   	 <option <core:if test="${filiere.id==stagiaire.filiere.id}">selected</core:if> value="${filiere.id}" >${filiere.id} - ${filiere.libelle}</option>
     </core:forEach>
         
     </select><br>

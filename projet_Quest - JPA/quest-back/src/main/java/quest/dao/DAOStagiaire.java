@@ -46,5 +46,13 @@ public class DAOStagiaire implements IDAOStagiaire{
 		em.getTransaction().commit();
 		em.close();	
 	}
+	
+	@Override
+	public List<Stagiaire> findAllDisponibles() {
+		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
+		List<Stagiaire> stagiaires = em.createQuery("SELECT s from Stagiaire s where s.ordinateur is empty").getResultList();
+		em.close();
+		return stagiaires;
+	}
 
 }

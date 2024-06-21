@@ -3,6 +3,8 @@
      <input id="btnAddFiliere" type="button" class ="btn btn-success" value="Ajouter">
      <a href="index.html"><input type="button" class ="btn btn-info" value="Retour"></a>
 
+<h1>Welcome ${login}</h1>
+
      <table class="table table-striped">
        <thead>
          <tr>

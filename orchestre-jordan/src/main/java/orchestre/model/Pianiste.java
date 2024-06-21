@@ -5,6 +5,10 @@ public class Pianiste implements IMusicien {
 	private String prenom;
 	private Piano instrument;
 
+	public Pianiste() {
+		this.prenom="Eric";
+	}
+
 	public String getPrenom() {
 		return prenom;
 	}
@@ -28,7 +32,7 @@ public class Pianiste implements IMusicien {
 	@Override
 	public void jouer() {
 		System.out.println("Le pianiste "+prenom+" joue ! "+instrument.son());
-		
+
 	}
 
 

@@ -1,13 +1,20 @@
 package demo.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MaConfig {
 
 	private int volume;
 	private boolean fenetre;
+	
+	@Autowired
 	private Reference2 ref;
 	
 	public MaConfig() 
 	{
+		this.volume=100;
 		this.fenetre=false;
 	}
 

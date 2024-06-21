@@ -5,6 +5,10 @@ public class Flutiste implements IMusicien {
 	private String prenom;
 	private IInstrument flute;
 	
+	public Flutiste() {
+		this.prenom="Olivier";
+	}
+	
 	public String getPrenom() {
 		return prenom;
 	}

@@ -13,7 +13,33 @@
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     
+    
+   <!--  
+    <bean name="guitare" class="orchestre.model.Guitare"/>
+  	
+  	<bean name="flute" class="orchestre.model.Flute"/>
+  	
   
+  	<bean name="guitaristeXML" class="orchestre.model.Guitariste">
+  		<property name="prenom" value="Jordan"/>
+		<property name="instrument" ref="guitare"/>
+  	</bean>
+  	
+  	<bean name="pianiste" class="orchestre.model.Pianiste">
+  		<property name="instrument"> 
+  			<bean name="piano" class="orchestre.model.Piano"/>
+  		</property>
+  	</bean>
+  	
+  	<bean name="flutiste" class="orchestre.model.Flutiste">
+		<property name="flute" ref="flute"/>
+  	</bean>
+  	
+    
+  		<bean name="flutisteBis" class="orchestre.model.Flutiste">
+			<property name="flute" ref="flute"/>
+  		</bean>
+  	-->
 
 </beans>
 

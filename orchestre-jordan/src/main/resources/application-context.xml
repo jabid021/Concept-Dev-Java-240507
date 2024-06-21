@@ -13,48 +13,7 @@
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     
-  <!--   
-    
-    <aop:config>
-    
-    <aop:aspect id="x" ref="publicAspect">
-    
-    	<aop:after-returning method="afterToStringGuitariste" returning="msg" pointcut="execution(public String orchestre.model.Guitariste.toString())"/>
-    
-    </aop:aspect>
-    
-    
-    </aop:config>
   
-   <bean id="guitaristeXML" class="orchestre.model.Guitariste">
-	<property name="prenom" value="Pierre"/>
-	<property name="instrument" ref="guitare"/>
-</bean>
-    		
-  		
-<bean id="guitare"  class="orchestre.model.Guitare"/>
-<bean id="piano"  class="orchestre.model.Piano"/>
-<bean id="flute"  class="orchestre.model.Flute"/>
-
-<bean id="guitariste" class="orchestre.model.Guitariste">
-	<property name="prenom" value="Jordan"/>
-	<property name="instrument" ref="guitare"/>
-</bean>
-
-
-<bean id="pianiste" class="orchestre.model.Pianiste">
-	<property name="instrument" ref="piano"/>
-</bean>
-
-<bean id="flutiste" class="orchestre.model.Flutiste">
-	<property name="flute" ref="flute"/>
-</bean>
-<context:component-scan base-package="orchestre.model"/>
--->  
-
-
-
-
 
 </beans>
 

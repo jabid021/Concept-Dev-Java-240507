@@ -4,15 +4,16 @@
 
 <div id="content">
 
-  <h3>Modifier Ordinateur 1</h3>
+  <h3>Modifier Ordinateur ${stagiaire.id}</h3>
   <form action="ordinateur" method="post">
-  <input type="hidden" name="id" value="1">
-  Marque :<input value="Asus" name="marque" type="text" placeholder="Saisir votre marque"><br>
-  RAM :<input value="8" name="ram" type="number" placeholder="Saisir votre RAM"><br>
-  Stagiaire
+  <input type="hidden" name="id" value="${stagiaire.id}">
+  Marque :<input value="${stagiaire.marque}" name="marque" type="text" placeholder="Saisir votre marque"><br>
+  RAM :<input value="8" name="${stagiaire.ram}" type="number" placeholder="Saisir votre RAM"><br>
+  Stagiaire :
     <select name="stagiaire">
-        <option selected value="1" >1 - Jordan Abid</option>
-        <option value="2" >2 - John Doe</option>
+    <core:forEach items="${stagiaires}" var="stagiaire">
+        <option selected value="${stagiaire.id}" >${stagiaire.prenom} ${stagiaire.nom}</option>
+    </core:forEach>
     </select><br>
 
     <input class ="btn btn-warning" type="submit" value="Modifier">

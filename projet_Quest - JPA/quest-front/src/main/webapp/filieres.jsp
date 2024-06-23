@@ -17,16 +17,17 @@
            </tr>
        </thead>
        <tbody>
-         <tr>
-           <td>1</td>
-           <td>DIS-399-SOPRA-JAVA</td>
-           <td>2022-10-25</td>
-           <td>2023-01-20</td>
-           <td>
-             <a href="filiere?id=1"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-             <a href="filiere?id=1&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
-           </td>
-         </tr>
+		<core:forEach items="${filieres}" var="filiere">
+	       	<tr>
+		           <td>${filiere.id}</td>
+		           <td>${filiere.libelle}</td>
+		           <td>${filiere.debut}</td>
+		           <td>${filiere.fin}</td>
+		           <td>
+			             <a href="filiere?id=${filiere.id}"><input type="button" class ="btn btn-warning" value="Modifier"></a><a href="filiere?id=${filiere.id}&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
+		           </td>
+	         </tr>
+       </core:forEach>
        </tbody>
      </table>
 

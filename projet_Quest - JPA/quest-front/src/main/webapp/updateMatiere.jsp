@@ -4,11 +4,11 @@
 
 <div id="content">
 
-  <h3>Modifier Matiere 1</h3>
+  <h3>Modifier Matiere ${matiere.id}</h3>
   <form action="matiere" method="post">
-  <input type="hidden" name="id" value="1">
-  Libelle :<input value="Algo avec Java" name="libelle" type="text" placeholder="Saisir le libelle"><br>
-  Code Quest :<input value="7245" name="quest" type="number" placeholder="Saisir le code Quest"><br>
+  <input type="hidden" name="id" value="${matiere.id}">
+  Libelle :<input value="${matiere.libelle}" name="libelle" type="text" placeholder="Saisir le libelle"><br>
+  Code Quest :<input value="${matiere.quest}" name="quest" type="number" placeholder="Saisir le code Quest"><br>
 
 
     <input class ="btn btn-warning" type="submit" value="Modifier">

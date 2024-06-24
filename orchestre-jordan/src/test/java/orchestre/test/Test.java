@@ -35,10 +35,10 @@ public class Test {
 	/*	guitariste.jouer();
 		musicien.jouer();
 		flutiste.jouer();
-		*/
+	*/
+		//guitariste.toString();
 		
-		System.out.println(guitariste);
-		guitariste.toString();
+		guitariste.jouer();
 	}
 
 }

@@ -10,9 +10,7 @@ public class Test {
 	@Autowired
 	DemoRepas demo;
 	
-	@Autowired
-	DemoAspect aspect;
-	
+
 	public void run(String[] ...args) {
 		
 		try {

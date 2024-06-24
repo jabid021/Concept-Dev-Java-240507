@@ -38,7 +38,12 @@ public class Test {
 	*/
 		//guitariste.toString();
 		
+		try {
 		guitariste.jouer();
+		}
+		catch(Exception e) {}
+		
+		System.out.println("Fin d'orchestre");
 	}
 
 }

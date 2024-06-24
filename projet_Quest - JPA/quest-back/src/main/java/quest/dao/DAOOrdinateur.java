@@ -3,48 +3,43 @@ package quest.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import quest.context.Singleton;
 import quest.model.Ordinateur;
 
+@Repository
+@Transactional 
 public class DAOOrdinateur implements IDAOOrdinateur{
 
+	 @PersistenceContext
+	 private EntityManager em;
 
 	@Override
 	public Ordinateur findById(Integer id) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		Ordinateur ordinateur = em.find(Ordinateur.class,id);
-		em.close();
 		return ordinateur;
 	}
 
 	@Override
 	public List<Ordinateur> findAll() {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		
 		List<Ordinateur> ordinateurs = em.createQuery("from Ordinateur").getResultList();
-		em.close();
 		return ordinateurs;
 	}
 
 	@Override
 	public Ordinateur save(Ordinateur ordinateur) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		em.getTransaction().begin();
 		ordinateur = em.merge(ordinateur);
-		em.getTransaction().commit();
-		em.close();
 		return ordinateur;
 	}
 
 	@Override
 	public void delete(Integer id) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		Ordinateur ordinateur = em.find(Ordinateur.class,id);
-		em.getTransaction().begin();
 		em.remove(ordinateur);
-		em.getTransaction().commit();
-		em.close();	
 	}
 
 }

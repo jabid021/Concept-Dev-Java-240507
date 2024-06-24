@@ -3,55 +3,48 @@ package quest.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import quest.context.Singleton;
 import quest.model.Stagiaire;
 
+@Repository
+@Transactional 
 public class DAOStagiaire implements IDAOStagiaire{
 
-
+	 @PersistenceContext
+	 private EntityManager em;
+	 
 	@Override
 	public Stagiaire findById(Integer id) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		Stagiaire stagiaire = em.find(Stagiaire.class,id);
-		em.close();
 		return stagiaire;
 	}
 
 	@Override
 	public List<Stagiaire> findAll() {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		
 		List<Stagiaire> stagiaires = em.createQuery("from Stagiaire").getResultList();
-		em.close();
 		return stagiaires;
 	}
 
 	@Override
 	public Stagiaire save(Stagiaire stagiaire) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		em.getTransaction().begin();
 		stagiaire = em.merge(stagiaire);
-		em.getTransaction().commit();
-		em.close();
 		return stagiaire;
 	}
 
 	@Override
 	public void delete(Integer id) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		Stagiaire stagiaire = em.find(Stagiaire.class,id);
-		em.getTransaction().begin();
 		em.remove(stagiaire);
-		em.getTransaction().commit();
-		em.close();	
 	}
 	
 	@Override
 	public List<Stagiaire> findAllDisponibles() {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		List<Stagiaire> stagiaires = em.createQuery("SELECT s from Stagiaire s where s.ordinateur is empty").getResultList();
-		em.close();
 		return stagiaires;
 	}
 

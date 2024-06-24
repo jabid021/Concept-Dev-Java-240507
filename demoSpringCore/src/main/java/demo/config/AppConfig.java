@@ -1,19 +1,14 @@
 package demo.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
-import demo.model.MaConfig;
+import org.springframework.context.annotation.ImportResource;
 
 @Configuration
 @ComponentScan("demo.model")
+@ImportResource("classpath:application-context.xml")
 public class AppConfig {
 	
-	@Bean
-	public MaConfig config2() 
-	{
-		return new MaConfig(100,false); 
-	}
+
 
 }

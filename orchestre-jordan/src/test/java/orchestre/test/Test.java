@@ -1,26 +1,44 @@
 package orchestre.test;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import orchestre.model.IMusicien;
-import orchestre.model.Pianiste;
 
 public class Test {
 
-	public static void main(String[] args) {
+	@Autowired
+	IMusicien guitariste;
+	
+	@Autowired
+	@Qualifier("pianiste")
+	IMusicien musicien;
+	
+	
+	@Autowired
+	IMusicien flutiste;
+	
+	
+	
+	public void run(String[] ...args) {
 	
 
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:application-context.xml");
+		//ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:application-context.xml");
+		//AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 		
-		IMusicien guitariste = (IMusicien) ctx.getBean("guitariste");
-		IMusicien pianiste = (IMusicien) ctx.getBean("pianiste");
-		IMusicien flutiste = (IMusicien) ctx.getBean("flutiste");
+		//IMusicien guitariste = (IMusicien) ctx.getBean("guitariste");
+		//IMusicien pianiste = (IMusicien) ctx.getBean("pianiste");
+		//IMusicien flutiste = (IMusicien) ctx.getBean("flutiste");
 		//IMusicien flutiste2 = (IMusicien) ctx.getBean("flutisteBis");
 	
 		
-		guitariste.jouer();
-		pianiste.jouer();
+	/*	guitariste.jouer();
+		musicien.jouer();
 		flutiste.jouer();
+		*/
+		
+		System.out.println(guitariste);
+		guitariste.toString();
 	}
 
 }

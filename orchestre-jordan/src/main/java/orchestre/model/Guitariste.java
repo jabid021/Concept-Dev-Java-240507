@@ -14,10 +14,20 @@ public class Guitariste implements IMusicien {
 	@Qualifier("guitare")
 	private IInstrument instrument;
 	
+	
+	
 	public Guitariste() {
-		this.prenom="Jordan";
+		
 	}
 	
+	
+	
+	public Guitariste(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+
 	public String getPrenom() {
 		return prenom;
 	}

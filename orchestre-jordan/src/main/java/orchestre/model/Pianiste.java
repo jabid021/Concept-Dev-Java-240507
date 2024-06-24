@@ -11,9 +11,20 @@ public class Pianiste implements IMusicien {
 	@Autowired
 	private Piano instrument;
 
-	public Pianiste() {
-		this.prenom="Eric";
+	/*public Pianiste(Piano instrument) 
+	{
+		//Ne marche pas (pour l'instant)
+		System.out.println("Le pianiste s'equipe d'un instrument "+instrument.getClass().getSimpleName());
+		
+	}*/
+	
+	public Pianiste() {}
+	
+	public Pianiste(String prenom) {
+		this.prenom = prenom;
 	}
+
+
 
 	public String getPrenom() {
 		return prenom;

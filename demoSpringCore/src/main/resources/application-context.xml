@@ -20,9 +20,30 @@
      	<property name="volume" value="100"/>
      	<property name="ref" ref="objet2"></property>
      </bean>
-     -->
+     
    <context:component-scan base-package="demo.model"/>
-
+   -->
+	<bean id="demoAspect" class="demo.aspect.DemoAspect"/>
+	
+	
+	
+	<aop:config>
+		<aop:pointcut  id="pointCutManger" expression="execution(public void demo.model.DemoRepas.manger(String))" />
+		<aop:aspect id="testAspect" ref="demoAspect">
+		
+			<aop:before method="mettreTable" pointcut="execution(public void demo.model.DemoRepas.manger(String))"/>
+			<aop:around method="laverMains" pointcut-ref="pointCutManger"/>
+			<aop:after method="faireVaisselle" pointcut="execution(public * demo.model.DemoRepas.*(..))"/>
+			<aop:after-returning method="faireSieste" returning="resultat" pointcut-ref="pointCutManger"/>
+			<aop:after-returning method="demoAvecReturnInt" returning="resultat" pointcut="execution(public int demo.model.DemoRepas.autreFonctionAvecReturn())"/>
+			
+			<aop:after-throwing method="punition" pointcut-ref="pointCutManger"/>
+		</aop:aspect>
+	
+	
+	
+	</aop:config>
+	
 </beans>
 
 

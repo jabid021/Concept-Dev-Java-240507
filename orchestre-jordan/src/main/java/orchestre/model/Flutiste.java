@@ -12,10 +12,16 @@ public class Flutiste implements IMusicien {
 	@Autowired
 	private IInstrument flute;
 	
-	public Flutiste() {
-		this.prenom="Olivier";
-	}
+	public Flutiste() {}
 	
+	
+	
+	public Flutiste(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+
 	public String getPrenom() {
 		return prenom;
 	}

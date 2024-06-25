@@ -1,9 +1,10 @@
 package test;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import quest.dao.IDAOFiliere;
-import quest.dao.IDAOMatiere;
 import quest.dao.IDAOOrdinateur;
 import quest.dao.IDAOStagiaire;
 import quest.model.Filiere;
@@ -55,11 +56,18 @@ public class App {
 		
 		
 		System.out.println("-----BLOC Filiere-------");
-		System.out.println(daoFiliere.findById(1));
+		
+		Optional<Filiere> opt = daoFiliere.findById(1);
+		if(opt.isPresent()) 
+		{
+			System.out.println(opt.get());
+		}
+		
+		/*System.out.println(daoFiliere.findById(1));
 		for(Filiere f : daoFiliere.findAll()) 
 		{
 			System.out.println(f);
-		}
+		}*/
 		
 		
 		

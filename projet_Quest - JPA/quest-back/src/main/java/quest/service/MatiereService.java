@@ -1,6 +1,7 @@
 package quest.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +21,12 @@ public class MatiereService {
 		{
 			throw new RuntimeException("Impossible de find une matiere sans id ???");
 		}
-		Matiere matiere = daoMatiere.findById(id);
-		return matiere;
+		Optional<Matiere> opt = daoMatiere.findById(id);
+		if(opt.isPresent()) 
+		{
+			return opt.get();
+		}
+		return null;
 	}
 	
 	public List<Matiere> getAll() 
@@ -65,7 +70,7 @@ public class MatiereService {
 		{
 			throw new RuntimeException("Impossible de supprimer une matiere sans id ???");
 		}
-		daoMatiere.delete(id);
+		daoMatiere.deleteById(id);
 	}
 	
 	public void delete(Matiere matiere) 

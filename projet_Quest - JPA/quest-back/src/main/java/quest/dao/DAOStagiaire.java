@@ -47,5 +47,9 @@ public class DAOStagiaire implements IDAOStagiaire{
 		List<Stagiaire> stagiaires = em.createQuery("SELECT s from Stagiaire s where s.ordinateur is empty").getResultList();
 		return stagiaires;
 	}
+	
+	
+	
+	
 
 }

@@ -10,12 +10,13 @@ import quest.model.Filiere;
 import quest.model.Matiere;
 import quest.model.Ordinateur;
 import quest.model.Stagiaire;
+import quest.service.MatiereService;
 
 public class App {
 
 	//Pourquoi ne pas mettre IDAO daoMatiere / DAOMatiere daoMatiere ???
 	@Autowired
-	IDAOMatiere daoMatiere;
+	MatiereService matiereSrv;
 	
 	@Autowired
 	IDAOFiliere daoFiliere;
@@ -28,27 +29,33 @@ public class App {
 	
 	public void run() {
 
-		
-		
-		for(Matiere m : daoMatiere.findAll()) 
+		System.out.println("-----BLOC Matiere-------");
+		System.out.println("matiere code : 7858"+matiereSrv.getByQuest(7858));
+		System.out.println(matiereSrv.getById(1));
+		for(Matiere m : matiereSrv.getAll()) 
 		{
 			System.out.println(m);
 		}
 		
-		System.out.println("------------");
+		
+		
+		System.out.println("-----BLOC Stagiaire-------");
+		System.out.println(daoStagiaire.findById(1));
 		for(Stagiaire s : daoStagiaire.findAllDisponibles()) 
 		{
 			System.out.println(s);
 		}
 		
-		System.out.println("------------");
+		System.out.println("-----BLOC Ordinateur-------");
+		System.out.println(daoOrdinateur.findById(1));
 		for(Ordinateur o : daoOrdinateur.findAll()) 
 		{
 			System.out.println(o);
 		}
 		
 		
-		System.out.println("------------");
+		System.out.println("-----BLOC Filiere-------");
+		System.out.println(daoFiliere.findById(1));
 		for(Filiere f : daoFiliere.findAll()) 
 		{
 			System.out.println(f);

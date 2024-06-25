@@ -16,7 +16,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan("quest.dao")
+@ComponentScan({"quest.dao","quest.service"})
 @EnableTransactionManagement
 public class AppConfig {
 

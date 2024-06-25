@@ -29,7 +29,7 @@ public class Test {
 		Achat ac2 = new Achat(c1,p2);
 		
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("eshopUnit");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("contextJPA");
 		
 
 		EntityManager em = emf.createEntityManager();

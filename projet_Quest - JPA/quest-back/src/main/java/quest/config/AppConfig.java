@@ -31,11 +31,11 @@ public class AppConfig {
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/quest_jsp");
+		dataSource.setDriverClassName(env.getProperty("spring.datasource.driver"));
+		dataSource.setUrl(env.getProperty("spring.datasource.url"));
 		dataSource.setUsername(env.getProperty("spring.datasource.username"));
 		dataSource.setPassword(env.getProperty("spring.datasource.password"));
-		dataSource.setMaxTotal(10);
+		dataSource.setMaxTotal(Integer.parseInt(env.getProperty("spring.datasource.total")));
 		return dataSource;
 	}
 
@@ -53,7 +53,7 @@ public class AppConfig {
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
+		properties.setProperty("hibernate.dialect", env.getProperty("spring.jpa.hibernate.dialect"));
 		properties.setProperty("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
 		properties.setProperty("hibernate.format_sql", env.getProperty("spring.jpa.format-sql"));
 		return properties;

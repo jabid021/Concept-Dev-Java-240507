@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import quest.dao.IDAOFiliere;
 import quest.model.Filiere;
+import quest.service.FiliereService;
 
 
 @WebServlet("/filiere")
 public class FiliereController extends HttpServlet {
 
 	@Autowired
-	IDAOFiliere daoFiliere;
+	FiliereService filiereSrv;
 	
 	public void init(ServletConfig config) throws ServletException
 	{
@@ -35,7 +35,7 @@ public class FiliereController extends HttpServlet {
 
 		if(request.getParameter("id")==null)
 		{
-			List<Filiere> filieres = daoFiliere.findAll();
+			List<Filiere> filieres = filiereSrv.getAll();
 			request.setAttribute("filieres", filieres);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/filieres.jsp").forward(request, response);
 		}
@@ -44,13 +44,13 @@ public class FiliereController extends HttpServlet {
 			if(request.getParameter("delete") != null)
 			{
 				Integer id= Integer.parseInt(request.getParameter("id"));
-				daoFiliere.deleteById(id);
+				filiereSrv.deleteById(id);
 				response.sendRedirect("filiere");
 			}
 			else
 			{
 				Integer id= Integer.parseInt(request.getParameter("id"));
-				Filiere filiere = daoFiliere.findById(id).get();
+				Filiere filiere = filiereSrv.getById(id);
 				request.setAttribute("filiere", filiere);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/updateFiliere.jsp").forward(request, response);
 			}
@@ -70,7 +70,7 @@ public class FiliereController extends HttpServlet {
 			String fin = request.getParameter("fin");
 
 			Filiere filiere  = new Filiere(libelle,LocalDate.parse(debut),LocalDate.parse(fin));
-			daoFiliere.save(filiere);
+			filiereSrv.insert(filiere);
 
 			response.sendRedirect("filiere");
 		}
@@ -86,11 +86,11 @@ public class FiliereController extends HttpServlet {
 			filiere.setVersion(version);
 
 			try{
-				daoFiliere.save(filiere);
+				filiereSrv.update(filiere);
 			}
 			catch(Exception e) 
 			{
-				filiere = daoFiliere.findById(id).get();
+				filiere = filiereSrv.getById(id);
 				request.setAttribute("filiere", filiere);
 				request.setAttribute("error", "Filiere deja update ?! Verifier les nouvelles données avant modif");
 				this.getServletContext().getRequestDispatcher("/WEB-INF/updateFiliere.jsp").forward(request, response);

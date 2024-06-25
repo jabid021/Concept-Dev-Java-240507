@@ -13,20 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import quest.dao.IDAOFiliere;
-import quest.dao.IDAOStagiaire;
 import quest.model.Filiere;
 import quest.model.Stagiaire;
+import quest.service.FiliereService;
+import quest.service.StagiaireService;
 
 
 @WebServlet("/stagiaire")
 public class StagiaireController extends HttpServlet {
 	
 	@Autowired
-	IDAOStagiaire daoStagiaire;
+	StagiaireService stagiaireSrv;
 	
 	@Autowired
-	IDAOFiliere daoFiliere;
+	FiliereService filiereSrv;
 	
 	public void init(ServletConfig config) throws ServletException
 	{
@@ -39,8 +39,8 @@ public class StagiaireController extends HttpServlet {
 		
 		 if(request.getParameter("id")==null)
 		 {
-		 	List<Stagiaire> stagiaires = daoStagiaire.findAll();
-		 	List<Filiere> filieres = daoFiliere.findAll();
+		 	List<Stagiaire> stagiaires = stagiaireSrv.getAll();
+		 	List<Filiere> filieres = filiereSrv.getAll();
 		 	request.setAttribute("stagiaires", stagiaires);
 		 	request.setAttribute("filieres", filieres);
 		 	this.getServletContext().getRequestDispatcher("/WEB-INF/stagiaires.jsp").forward(request, response);
@@ -50,14 +50,14 @@ public class StagiaireController extends HttpServlet {
 		 	if(request.getParameter("delete") != null)
 		 	{
 		 		Integer id= Integer.parseInt(request.getParameter("id"));
-		 		daoStagiaire.delete(id);
+		 		stagiaireSrv.deleteById(id);
 		 		response.sendRedirect("stagiaire");
 		 	}
 		 	else
 		 	{
 		 		Integer id= Integer.parseInt(request.getParameter("id"));
-		 		Stagiaire stagiaire = daoStagiaire.findById(id);
-		 		List<Filiere> filieres = daoFiliere.findAll();
+		 		Stagiaire stagiaire = stagiaireSrv.getById(id);
+		 		List<Filiere> filieres = filiereSrv.getAll();
 		 		request.setAttribute("stagiaire", stagiaire);
 		 		request.setAttribute("filieres", filieres);
 		 		this.getServletContext().getRequestDispatcher("/WEB-INF/updateStagiaire.jsp").forward(request, response);
@@ -77,10 +77,10 @@ public class StagiaireController extends HttpServlet {
 			 String prenom = request.getParameter("prenom");
 			 String nom = request.getParameter("nom");
 			 Integer idFiliere= Integer.parseInt(request.getParameter("filiere.id"));
-			 Filiere filiere = daoFiliere.findById(idFiliere);
+			 Filiere filiere = filiereSrv.getById(idFiliere);
 			 
 			 Stagiaire stagiaire  = new Stagiaire(nom,prenom,email,filiere);
-			 daoStagiaire.save(stagiaire);
+			 stagiaireSrv.insert(stagiaire);
 			 
 			 response.sendRedirect("stagiaire");
 		}
@@ -91,10 +91,10 @@ public class StagiaireController extends HttpServlet {
 			 String prenom = request.getParameter("prenom");
 			 String nom = request.getParameter("nom");
 			 Integer idFiliere= Integer.parseInt(request.getParameter("filiere.id"));
-			 Filiere filiere = daoFiliere.findById(idFiliere);
+			 Filiere filiere = filiereSrv.getById(idFiliere);
 			 
 			 Stagiaire stagiaire  = new Stagiaire(id,nom,prenom,email,filiere);
-			 daoStagiaire.save(stagiaire);
+			 stagiaireSrv.update(stagiaire);
 			 
 			 response.sendRedirect("stagiaire");
 		}

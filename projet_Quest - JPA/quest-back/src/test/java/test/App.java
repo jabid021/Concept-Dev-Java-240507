@@ -15,7 +15,6 @@ import quest.service.MatiereService;
 
 public class App {
 
-	//Pourquoi ne pas mettre IDAO daoMatiere / DAOMatiere daoMatiere ???
 	@Autowired
 	MatiereService matiereSrv;
 	

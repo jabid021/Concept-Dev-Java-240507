@@ -22,7 +22,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @ComponentScan("quest.service")
 @EnableJpaRepositories("quest.dao")
-//@EnableTransactionManagement
 @PropertySource("classpath:infos.properties")
 public class AppConfig {
 

@@ -13,20 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
-import quest.dao.IDAOOrdinateur;
-import quest.dao.IDAOStagiaire;
 import quest.model.Ordinateur;
 import quest.model.Stagiaire;
+import quest.service.OrdinateurService;
+import quest.service.StagiaireService;
 
 
 @WebServlet("/ordinateur")
 public class OrdinateurController extends HttpServlet {
 
 	@Autowired
-	IDAOOrdinateur daoOrdinateur;
+	OrdinateurService ordinateurSrv;
 
 	@Autowired
-	IDAOStagiaire daoStagiaire;
+	StagiaireService stagiaireSrv;
 
 	public void init(ServletConfig config) throws ServletException
 	{
@@ -39,8 +39,8 @@ public class OrdinateurController extends HttpServlet {
 
 		if(request.getParameter("id")==null)
 		{
-			List<Ordinateur> ordinateurs = daoOrdinateur.findAll();
-			List<Stagiaire> stagiaires = daoStagiaire.findAllDisponibles();
+			List<Ordinateur> ordinateurs = ordinateurSrv.getAll();
+			List<Stagiaire> stagiaires = stagiaireSrv.getAllDisponibles();
 			request.setAttribute("ordinateurs", ordinateurs);
 			request.setAttribute("stagiaires", stagiaires);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/ordinateurs.jsp").forward(request, response);
@@ -50,14 +50,14 @@ public class OrdinateurController extends HttpServlet {
 			if(request.getParameter("delete") != null)
 			{
 				Integer id= Integer.parseInt(request.getParameter("id"));
-				daoOrdinateur.delete(id);
+				ordinateurSrv.deleteById(id);
 				response.sendRedirect("ordinateur");
 			}
 			else
 			{
 				Integer id= Integer.parseInt(request.getParameter("id"));
-				Ordinateur ordinateur = daoOrdinateur.findById(id);
-				List<Stagiaire> stagiaires = daoStagiaire.findAllDisponibles();
+				Ordinateur ordinateur = ordinateurSrv.getById(id);
+				List<Stagiaire> stagiaires = stagiaireSrv.getAllDisponibles();
 				request.setAttribute("ordinateur", ordinateur);
 				request.setAttribute("stagiaires", stagiaires);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/updateOrdinateur.jsp").forward(request, response);
@@ -76,10 +76,10 @@ public class OrdinateurController extends HttpServlet {
 			String marque = request.getParameter("marque");
 			Integer ram= Integer.parseInt(request.getParameter("ram"));
 			Integer idStagiaire= Integer.parseInt(request.getParameter("stagiaire.id"));
-			Stagiaire stagiaire = daoStagiaire.findById(idStagiaire);
+			Stagiaire stagiaire = stagiaireSrv.getById(idStagiaire);
 
 			Ordinateur ordinateur  = new Ordinateur(marque,ram,stagiaire);
-			daoOrdinateur.save(ordinateur);
+			ordinateurSrv.insert(ordinateur);
 
 			response.sendRedirect("ordinateur");
 		}
@@ -89,10 +89,10 @@ public class OrdinateurController extends HttpServlet {
 			String marque = request.getParameter("marque");
 			Integer ram= Integer.parseInt(request.getParameter("ram"));
 			Integer idStagiaire= Integer.parseInt(request.getParameter("stagiaire.id"));
-			Stagiaire stagiaire = daoStagiaire.findById(idStagiaire);
+			Stagiaire stagiaire = stagiaireSrv.getById(idStagiaire);
 
 			Ordinateur ordinateur  = new Ordinateur(id,marque,ram,stagiaire);
-			daoOrdinateur.save(ordinateur);
+			ordinateurSrv.update(ordinateur);
 
 			response.sendRedirect("ordinateur");
 		}

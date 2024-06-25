@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,10 +54,13 @@ public class DAOProduitTest {
 		p1=daoProduit.save(p1);
 
 		//Act
-		Produit produit = daoProduit.findById(p1.getId());
-
+		 Optional<Produit>opt= daoProduit.findById(p1.getId());
 		//Assert
-		assertNotNull(produit);
+		if(opt.isEmpty()) 
+		{
+			fail();
+		}
+	
 	}
 
 
@@ -90,10 +96,13 @@ public class DAOProduitTest {
 		p1=daoProduit.save(p1);
 		
 		//Act
-		daoProduit.delete(p1.getId());
+		daoProduit.deleteById(p1.getId());
 	
 		//Assert
-		Produit produit = daoProduit.findById(p1.getId());
-		assertNull(produit);
+		Optional<Produit>opt=daoProduit.findById(p1.getId());
+		if(opt.isPresent()) 
+		{
+			fail();
+		}
 	}
 }

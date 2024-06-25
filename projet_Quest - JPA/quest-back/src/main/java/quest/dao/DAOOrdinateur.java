@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import quest.context.Singleton;
 import quest.model.Ordinateur;
 
 @Repository

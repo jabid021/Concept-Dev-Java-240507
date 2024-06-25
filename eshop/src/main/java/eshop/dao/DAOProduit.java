@@ -3,48 +3,40 @@ package eshop.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-import eshop.context.Singleton;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import eshop.model.Produit;
-
+@Repository
+@Transactional
 public class DAOProduit implements IDAOProduit{
 
-
+	@PersistenceContext
+	EntityManager em;
 	@Override
 	public Produit findById(Integer id) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		Produit produit = em.find(Produit.class,	id);
-		em.close();
 		return produit;
 	}
 
 	@Override
 	public List<Produit> findAll() {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		
 		List<Produit> produits = em.createQuery("from Produit").getResultList();
-		em.close();
 		return produits;
 	}
 
 	@Override
 	public Produit save(Produit produit) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
-		em.getTransaction().begin();
 		produit = em.merge(produit);
-		em.getTransaction().commit();
-		em.close();
 		return produit;
 	}
 
 	@Override
 	public void delete(Integer id) {
-		EntityManager em = Singleton.getInstance().getEmf().createEntityManager();
 		Produit produit = em.find(Produit.class,id);
-		em.getTransaction().begin();
-		em.remove(produit);
-		em.getTransaction().commit();
-		em.close();	
+		em.remove(produit);	
 	}
 
 }

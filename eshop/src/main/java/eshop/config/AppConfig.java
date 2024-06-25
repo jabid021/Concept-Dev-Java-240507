@@ -1,16 +1,13 @@
-package quest.config;
+package eshop.config;
 
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -19,22 +16,17 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan({"quest.dao","quest.service"})
+@ComponentScan({"eshop.dao","eshop.service"})
 @EnableTransactionManagement
-@PropertySource("classpath:infos.properties")
 public class AppConfig {
-
-
-	@Autowired
-	private Environment env;
 
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/quest_jsp");
-		dataSource.setUsername(env.getProperty("spring.datasource.username"));
-		dataSource.setPassword(env.getProperty("spring.datasource.password"));
+		dataSource.setUrl("jdbc:mysql://localhost:3306/eshop");
+		dataSource.setUsername("root");
+		dataSource.setPassword("root");
 		dataSource.setMaxTotal(10);
 		return dataSource;
 	}
@@ -44,18 +36,18 @@ public class AppConfig {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		emf.setDataSource(dataSource);
-		emf.setPackagesToScan("quest.model");
+		emf.setPackagesToScan("eshop.model");
 		emf.setJpaVendorAdapter(vendorAdapter);
 		emf.setJpaProperties(this.hibernateProperties());
 		return emf;
 	}
-
+	
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
+		properties.setProperty("hibernate.hbm2ddl.auto", "update");
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
-		properties.setProperty("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
-		properties.setProperty("hibernate.format_sql", env.getProperty("spring.jpa.format-sql"));
+		properties.setProperty("hibernate.show_sql", "false");
+		properties.setProperty("hibernate.format_sql", "false");
 		return properties;
 	}
 

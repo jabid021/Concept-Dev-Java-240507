@@ -78,8 +78,11 @@ public class StagiaireController extends HttpServlet {
 			 String nom = request.getParameter("nom");
 			 Integer idFiliere= Integer.parseInt(request.getParameter("filiere.id"));
 			 Filiere filiere = filiereSrv.getById(idFiliere);
-			 
-			 Stagiaire stagiaire  = new Stagiaire(nom,prenom,email,filiere);
+			 //
+			Filiere fakeFiliere=new Filiere();
+			fakeFiliere.setId(idFiliere);
+			
+			 Stagiaire stagiaire  = new Stagiaire(nom,prenom,email,fakeFiliere);
 			 stagiaireSrv.insert(stagiaire);
 			 
 			 response.sendRedirect("stagiaire");

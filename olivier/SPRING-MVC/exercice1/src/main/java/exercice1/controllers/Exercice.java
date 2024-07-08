@@ -39,8 +39,8 @@ public class Exercice {
 	}
 
 	@GetMapping("/welcome")
-	public String welcome() {
-		System.out.println(stagiaireSrv);
+	public String welcome(Model model) {
+		model.addAttribute("stagiaires", stagiaireSrv.getAll());
 		return "exercice1/welcome";
 	}
 }

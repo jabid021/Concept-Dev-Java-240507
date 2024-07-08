@@ -83,8 +83,5 @@ public class Filiere {
 	public String toString() {
 		return "Filiere [id=" + id + ", libelle=" + libelle + ", debut=" + debut + ", fin=" + fin + "]";
 	}
-	
-	
-	
-	
+			
 }

@@ -40,6 +40,13 @@
 			<artifactId>quest-back</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>jakarta.servlet.jsp</groupId>
+			<artifactId>jakarta.servlet.jsp-api</artifactId>
+			<version>3.1.1</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 

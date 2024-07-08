@@ -9,6 +9,6 @@ import quest.model.Stagiaire;
 
 public interface IDAOStagiaire extends JpaRepository<Stagiaire,Integer> {
 
-	@Query("SELECT s from Stagiaire s where s.ordinateur is empty")
+	@Query("SELECT s from Stagiaire s where s.ordinateur is null")
 	public List<Stagiaire> findAllDisponibles();
 }

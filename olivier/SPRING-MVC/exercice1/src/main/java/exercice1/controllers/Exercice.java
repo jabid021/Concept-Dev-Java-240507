@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import exercice1.model.Personne;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
@@ -17,31 +18,23 @@ import jakarta.validation.Valid;
 public class Exercice {
 
 	@GetMapping("")
-	public String goForm() {
+	public String goForm(Model model) {
+		model.addAttribute("personne", new Personne());
 		return "exercice1/form";
 	}
 
 	@PostMapping("")
-	public String goWelcome(@Valid @ModelAttribute Personne personne, BindingResult br, Model model) {
-		boolean error = false;
-		
-		System.out.println(br);
-		
-		if (personne.getPrenom() == null || personne.getPrenom().isBlank()) {
-			model.addAttribute("prenomError", true);
-			error = true;
-		}
-		if (personne.getNom() == null || personne.getNom().isBlank()) {
-			model.addAttribute("nomError", true);
-			error = true;
-		}
-
-		model.addAttribute("personne", personne);
-		if (error) {
+	public String goWelcome(@Valid @ModelAttribute Personne personne, BindingResult br, Model model,
+			HttpSession session) {
+		if (br.hasErrors()) {
 			return "exercice1/form";
-		} else {
-			return "exercice1/welcome";
 		}
+		session.setAttribute("personne", personne);
+		return "redirect:/form/welcome";
+	}
 
+	@GetMapping("/welcome")
+	public String welcome() {
+		return "exercice1/welcome";
 	}
 }

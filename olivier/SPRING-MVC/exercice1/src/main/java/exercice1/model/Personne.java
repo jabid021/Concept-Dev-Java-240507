@@ -6,7 +6,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 
 public class Personne {
-	@NotBlank
+	@NotBlank(message = "pas vide!!!!")
 	private String prenom;
 	private String nom;
 	private int age;

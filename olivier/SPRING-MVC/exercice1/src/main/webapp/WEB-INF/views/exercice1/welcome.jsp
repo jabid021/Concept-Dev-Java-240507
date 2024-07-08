@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>bonjour ${prenom} ${nom }</h1>
+<h1>bonjour ${personne.prenom} ${personne.nom} ${personne.age } ${personne.dtNaissance } ${personne.adresse.rue }</h1>
 </body>
 </html>

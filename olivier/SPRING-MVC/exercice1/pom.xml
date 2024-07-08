@@ -25,7 +25,16 @@
 			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 			<version>2.0.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>7.0.0.Final</version>
+		</dependency>
 	</dependencies>
 
 
@@ -46,7 +55,7 @@
 		<finalName>exercice1</finalName>
 		<!-- pour prise en compte apres modif
 			 click droit sur
-			 projet=>maven=>update project
+		projet=>maven=>update project
 			 supprimer et refaire le serveur
 	 	-->
 	</build>

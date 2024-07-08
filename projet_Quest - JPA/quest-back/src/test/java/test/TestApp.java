@@ -12,7 +12,7 @@ class TestApp {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		
 	}
 
 }

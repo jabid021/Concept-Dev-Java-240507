@@ -1,16 +1,19 @@
 package quest.model;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 
 @Entity
-@Table(name="filiere")
+@Table(name = "filiere")
 public class Filiere {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,19 +21,22 @@ public class Filiere {
 	private String libelle;
 	private LocalDate debut;
 	private LocalDate fin;
-	
+	@OneToMany(mappedBy = "filiere", fetch = FetchType.LAZY)
+	private Set<Stagiaire> stagiaires;
+
 	@Version
 	private int version;
-	
-	public Filiere() {}
-	
+
+	public Filiere() {
+	}
+
 	public Filiere(Integer id, String libelle, LocalDate debut, LocalDate fin) {
 		this.id = id;
 		this.libelle = libelle;
 		this.debut = debut;
 		this.fin = fin;
 	}
-	
+
 	public Filiere(String libelle, LocalDate debut, LocalDate fin) {
 		this.libelle = libelle;
 		this.debut = debut;
@@ -69,8 +75,14 @@ public class Filiere {
 		this.fin = fin;
 	}
 
-	
-	
+	public Set<Stagiaire> getStagiaires() {
+		return stagiaires;
+	}
+
+	public void setStagiaires(Set<Stagiaire> stagiaires) {
+		this.stagiaires = stagiaires;
+	}
+
 	public int getVersion() {
 		return version;
 	}
@@ -83,5 +95,5 @@ public class Filiere {
 	public String toString() {
 		return "Filiere [id=" + id + ", libelle=" + libelle + ", debut=" + debut + ", fin=" + fin + "]";
 	}
-			
+
 }

@@ -1,10 +1,14 @@
 package questRest.dto.request;
 
+import jakarta.validation.constraints.NotNull;
+
 public class StagiaireRequest {
 	private Integer id;
 	private String prenom;
 	private String nom;
 	private String email;
+	@NotNull
+	private Integer idFiliere;
 
 	public StagiaireRequest() {
 
@@ -40,6 +44,14 @@ public class StagiaireRequest {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Integer getIdFiliere() {
+		return idFiliere;
+	}
+
+	public void setIdFiliere(Integer idFiliere) {
+		this.idFiliere = idFiliere;
 	}
 
 }

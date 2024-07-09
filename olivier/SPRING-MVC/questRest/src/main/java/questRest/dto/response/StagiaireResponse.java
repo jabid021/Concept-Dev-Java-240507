@@ -2,25 +2,41 @@ package questRest.dto.response;
 
 import org.springframework.beans.BeanUtils;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import quest.model.Stagiaire;
 
 public class StagiaireResponse {
-
+	@JsonView(CustomJsonViews.Common.class)
 	private Integer id;
+	@JsonView(CustomJsonViews.Common.class)
 	private String prenom;
+	@JsonView(CustomJsonViews.Common.class)
 	private String nom;
+	@JsonView({ CustomJsonViews.Common.class })
 	private String email;
+	@JsonView(CustomJsonViews.StagaireWithFiliere.class)
+	private FiliereResponse filiere;
 
 	public StagiaireResponse() {
 
 	}
-	
-	public StagiaireResponse(Stagiaire stagiaireEntity) {
+
+	public StagiaireResponse(Stagiaire stagiaire) {
+		this(stagiaire, true);
+	}
+
+	public StagiaireResponse(Stagiaire stagiaireEntity, boolean bool) {
 //		this.setId(stagiaireEntity.getId());
 //		this.setPrenom(stagiaireEntity.getPrenom());
 //		this.setEmail(stagiaireEntity.getEmail());
 //		this.setNom(stagiaireEntity.getNom());
-		BeanUtils.copyProperties(stagiaireEntity, this);
+		BeanUtils.copyProperties(stagiaireEntity, this, "filiere");
+		if (bool) {
+			if (stagiaireEntity.getFiliere() != null) {
+				this.setFiliere(new FiliereResponse(stagiaireEntity.getFiliere()));
+			}
+		}
 	}
 
 	public Integer getId() {
@@ -53,6 +69,14 @@ public class StagiaireResponse {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public FiliereResponse getFiliere() {
+		return filiere;
+	}
+
+	public void setFiliere(FiliereResponse filiere) {
+		this.filiere = filiere;
 	}
 
 }

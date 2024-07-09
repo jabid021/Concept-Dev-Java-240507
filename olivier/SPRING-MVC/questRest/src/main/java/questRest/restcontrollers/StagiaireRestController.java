@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,8 +68,22 @@ public class StagiaireRestController {
 	}
 
 	@PutMapping("/{id}")
-	public StagiaireResponse update(@RequestBody StagiaireRequest stagiaireRequest, @PathVariable Integer id) {
+	@JsonView(CustomJsonViews.StagaireWithFiliere.class)
+	public StagiaireResponse update(@Valid @RequestBody StagiaireRequest stagiaireRequest, BindingResult br,
+			@PathVariable Integer id) {
+		if (br.hasErrors()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
 		Stagiaire stagiaire = new Stagiaire();
 		BeanUtils.copyProperties(stagiaireRequest, stagiaire);
+		stagiaire.setFiliere(filiereSrv.getById(stagiaireRequest.getIdFiliere()));
+		stagiaire.setId(id);
+		return new StagiaireResponse(stagiaireSrv.update(stagiaire));
+	}
+
+	@DeleteMapping("/{id}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable Integer id) {
+		stagiaireSrv.deleteById(id);
 	}
 }

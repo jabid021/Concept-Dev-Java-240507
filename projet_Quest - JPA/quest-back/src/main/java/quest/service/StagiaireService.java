@@ -42,14 +42,14 @@ public class StagiaireService {
 
 	public Stagiaire insert(Stagiaire stagiaire) 
 	{
-		if(stagiaire.getFiliere()==null) 
-		{
-			throw new RuntimeException("Impossible d'insert un stagiaire sans une filiere");
-		}
-		if(stagiaire.getFiliere().getId()==null) 
-		{
-			throw new RuntimeException("Impossible d'insert un stagiaire avec une filiere sans id");
-		}
+//		if(stagiaire.getFiliere()==null) 
+//		{
+//			throw new RuntimeException("Impossible d'insert un stagiaire sans une filiere");
+//		}
+//		if(stagiaire.getFiliere().getId()==null) 
+//		{
+//			throw new RuntimeException("Impossible d'insert un stagiaire avec une filiere sans id");
+//		}
 		return daoStagiaire.save(stagiaire);
 	}
 

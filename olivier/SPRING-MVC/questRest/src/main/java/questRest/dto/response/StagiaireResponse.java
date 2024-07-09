@@ -34,7 +34,7 @@ public class StagiaireResponse {
 		BeanUtils.copyProperties(stagiaireEntity, this, "filiere");
 		if (bool) {
 			if (stagiaireEntity.getFiliere() != null) {
-				this.setFiliere(new FiliereResponse(stagiaireEntity.getFiliere()));
+				this.setFiliere(new FiliereResponse(stagiaireEntity.getFiliere(),false));
 			}
 		}
 	}

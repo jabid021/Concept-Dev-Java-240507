@@ -1,0 +1,8 @@
+2024-07-11T11:53:50.249+02:00  INFO 4397 --- [main] f.c.formationSpringboot.Application      : Starting Application using Java 17.0.1 with PID 4397 (/Users/olivier/Documents/formation-2024-05-21.nosync/Concept-Dev-Java-240507/olivier/SPRING-BOOT/formationSpringboot/target/classes started by olivier in /Users/olivier/Documents/formation-2024-05-21.nosync/Concept-Dev-Java-240507/olivier/SPRING-BOOT/formationSpringboot)
+2024-07-11T11:53:50.250+02:00  INFO 4397 --- [main] f.c.formationSpringboot.Application      : No active profile set, falling back to 1 default profile: "default"
+2024-07-11T11:53:50.445+02:00  INFO 4397 --- [main] f.c.formationSpringboot.Application      : Started Application in 0.351 seconds (process running for 0.582)
+2024-07-11T11:53:50.447+02:00 TRACE 4397 --- [main] f.c.f.services.HelloService              : trace
+2024-07-11T11:53:50.447+02:00 DEBUG 4397 --- [main] f.c.f.services.HelloService              : debug
+2024-07-11T11:53:50.447+02:00  INFO 4397 --- [main] f.c.f.services.HelloService              : info
+2024-07-11T11:53:50.447+02:00  WARN 4397 --- [main] f.c.f.services.HelloService              : warn
+2024-07-11T11:53:50.447+02:00 ERROR 4397 --- [main] f.c.f.services.HelloService              : error

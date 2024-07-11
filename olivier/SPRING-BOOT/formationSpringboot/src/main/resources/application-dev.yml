@@ -1,0 +1,9 @@
+logging:
+  level:
+    formation:
+      conceptdev:
+        formationSpringboot:
+          controllers: debug
+          services:
+            HelloService: trace
+    root: info

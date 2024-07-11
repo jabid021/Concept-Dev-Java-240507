@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.persistence.Version;
 
 @Entity
@@ -22,6 +23,7 @@ public class Filiere {
 	private LocalDate debut;
 	private LocalDate fin;
 	@OneToMany(mappedBy = "filiere", fetch = FetchType.LAZY)
+	//@Transient
 	private Set<Stagiaire> stagiaires;
 
 	@Version

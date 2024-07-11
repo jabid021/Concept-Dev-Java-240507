@@ -36,7 +36,8 @@ public class FiliereRestController {
 	@GetMapping("")
 	@JsonView(CustomJsonViews.Common.class)
 	public List<FiliereResponse> getAll() {
-		return filiereSrv.getAll().stream().map(filiere -> new FiliereResponse(filiere,false)).collect(Collectors.toList());
+		return filiereSrv.getAll().stream().map(filiere -> new FiliereResponse(filiere, false))
+				.collect(Collectors.toList());
 	}
 
 	@PostMapping("")
@@ -48,18 +49,19 @@ public class FiliereRestController {
 		}
 		Filiere filiere = new Filiere();
 		BeanUtils.copyProperties(filiereRequest, filiere);
-		return new FiliereResponse(filiereSrv.insert(filiere),false);
+		return new FiliereResponse(filiereSrv.insert(filiere), false);
 	}
 
 	@GetMapping("/{id}")
 	@JsonView(CustomJsonViews.Common.class)
 	public FiliereResponse getById(@PathVariable Integer id) {
-		return new FiliereResponse(filiereSrv.getById(id),false);
+		return new FiliereResponse(filiereSrv.getById(id), false);
 	}
 
 	@GetMapping("/{id}/stagiaire")
+	@JsonView(CustomJsonViews.FiliereWithStagiaire.class)
 	public FiliereResponse getByIdWithStagiaire(@PathVariable Integer id) {
 		return new FiliereResponse(filiereSrv.getByIdWithStagiaire(id));
 	}
-	
+
 }

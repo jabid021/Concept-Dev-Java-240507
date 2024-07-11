@@ -37,6 +37,12 @@ public class StagiaireRestController {
 	@Autowired
 	private FiliereService filiereSrv;
 
+	@GetMapping("/{id}")
+	@JsonView(CustomJsonViews.StagaireWithFiliere.class)
+	public StagiaireResponse getById(@PathVariable Integer id) {
+		return new StagiaireResponse(stagiaireSrv.getById(id));
+	}
+
 	@GetMapping("")
 	@JsonView(CustomJsonViews.StagaireWithFiliere.class)
 	public List<StagiaireResponse> getAll() {

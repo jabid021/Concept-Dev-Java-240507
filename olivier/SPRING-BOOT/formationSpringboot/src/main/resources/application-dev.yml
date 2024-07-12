@@ -14,12 +14,12 @@ spring:
     password: root123@
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
         '[format_sql]': true
-    show-sql: true
+    show-sql: false
   mvc:
     view:
       prefix: /WEB-INF/views/

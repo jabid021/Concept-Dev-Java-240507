@@ -27,11 +27,5 @@ public class SecurityConfig {
 		return http.build();
 	}
 	
-	@Bean
-	UserDetailsService inMemory() {
-		InMemoryUserDetailsManager mgr=new InMemoryUserDetailsManager();
-		mgr.createUser(User.withUsername("admin").password("{noop}admin").roles("ADMIN").build());
-		mgr.createUser(User.withUsername("user").password("{noop}user").roles("USER").build());
-		return mgr;
-	}
+
 }

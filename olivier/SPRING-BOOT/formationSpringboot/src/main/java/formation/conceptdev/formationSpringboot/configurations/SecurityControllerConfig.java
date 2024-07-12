@@ -13,8 +13,8 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import jakarta.servlet.DispatcherType;
 
-@Configuration
-public class SecurityConfig {
+//@Configuration
+public class SecurityControllerConfig {
 
 	@Bean
 	PasswordEncoder passwordEncoder() {

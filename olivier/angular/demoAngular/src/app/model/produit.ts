@@ -23,5 +23,5 @@ export class Produit {
   //   this._nom = value;
   // }
 
-  constructor(public nom?: string, public prix?: number) {}
+  constructor(public nom?: string, public prix?: number,public image?:string) {}
 }

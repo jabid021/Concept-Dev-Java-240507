@@ -12,10 +12,24 @@ import { Equipe } from '../../../../model/equipe';
 })
 export class SondageComponent {
   message = 'meilleur equipe de ping pong';
-  equipeAEnvoyer = new Equipe(
-    'coree',
-    'https://cdn-icons-png.flaticon.com/128/197/197582.png'
-  );
+  equipes: Equipe[] = [
+    new Equipe(
+      'france',
+      'https://cdn-icons-png.flaticon.com/128/197/197560.png'
+    ),
+    new Equipe(
+      'suisse',
+      'https://cdn-icons-png.flaticon.com/128/197/197540.png'
+    ),
+    new Equipe(
+      'coree',
+      'https://cdn-icons-png.flaticon.com/128/197/197582.png'
+    ),
+    new Equipe(
+      'france',
+      'https://cdn-icons-png.flaticon.com/128/197/197560.png'
+    ),
+  ];
   voteEquipeEnTete = 0;
 
   traitementVote(data: any) {

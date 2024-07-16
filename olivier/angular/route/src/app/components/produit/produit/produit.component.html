@@ -1,0 +1,15 @@
+<table class="table">
+  <tbody>
+    @for(p of produits;track $index){
+    <tr>
+      <td>{{ p.nom }}</td>
+      <td>{{ p.prix }}</td>
+      <td>
+        <a [routerLink]="['/produit', p.nom]" routerLinkActive="active"
+          >detail</a
+        >
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>

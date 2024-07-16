@@ -1,11 +1,6 @@
-<div>
-  nom:<input [(ngModel)]="produit.nom" /> prix:<input
-    [(ngModel)]="produit.prix"
-  />
-  <button (click)="valider()">valider</button>
-</div>
+<app-form-produit
+  (produitReadyEvent)="recuperationDuProduitDepuisLEvenement($event)"
+></app-form-produit>
 @if (produitAAfficher) {
 <app-display-produit [produit]="produitAAfficher"></app-display-produit>
-}@else{
-{{ message }}
 }

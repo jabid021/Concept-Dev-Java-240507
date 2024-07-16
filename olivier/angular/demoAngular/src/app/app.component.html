@@ -1,1 +1,28 @@
-<app-sondage></app-sondage>
+<div>
+  <span
+    ><a
+      [routerLink]="[
+        {
+          outlets: {
+            primary: ['home'],
+            sidebar: ['sidebar']
+          }
+        }
+      ]"
+      routerLinkActive="active"
+    >
+      home</a
+    ></span
+  >
+  <span> <a routerLink="/sondage" routerLinkActive="active">sondage</a></span>
+  <a routerLink="/exercice/produit" routerLinkActive="active">produit</a>
+  <a routerLink="/param/olivier" routerLinkActive="active"
+    >component avec parametre</a
+  >
+  <a routerLink="/param/toto" routerLinkActive="active"
+    >component avec parametre toto</a
+  >
+</div>
+
+<router-outlet></router-outlet>
+<router-outlet name="sidebar"></router-outlet>

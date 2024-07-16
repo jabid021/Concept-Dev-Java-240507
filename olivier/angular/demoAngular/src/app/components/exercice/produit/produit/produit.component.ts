@@ -1,28 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { Produit } from '../../../../model/produit';
 import { FormsModule } from '@angular/forms';
+import { DisplayProduitComponent } from '../display-produit/display-produit.component';
 
 @Component({
   selector: 'app-produit',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, DisplayProduitComponent],
   templateUrl: './produit.component.html',
   styleUrl: './produit.component.css',
 })
 export class ProduitComponent implements OnInit {
   ngOnInit(): void {
-    this.produit = new Produit(
-      'teleeeee',
-      1000,
-      'https://cdn.pixabay.com/photo/2016/11/21/12/10/tv-1844964_1280.jpg'
-    );
+    this.produit = new Produit();
   }
-
-  produit!: Produit;
   message = '';
+  produit!: Produit;
+  produitAAfficher!: Produit;
 
-  hello() {
-    console.log('hello world');
-    this.message = 'toto';
+  valider() {
+    if (this.produit.nom && this.produit.prix) {
+      //produit complet
+      this.produitAAfficher = new Produit(
+        this.produit.nom,
+        this.produit.prix,
+        this.produit.image
+      );
+    } else {
+      this.message = 'il manque des infos';
+    }
   }
 }

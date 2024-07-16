@@ -1,9 +1,11 @@
 <div>
-  nom:{{ produit.nom }} prix:{{ produit.prix }} <br />
-  <img [src]="produit.image" alt="" width="300px" height="200px" />
+  nom:<input [(ngModel)]="produit.nom" /> prix:<input
+    [(ngModel)]="produit.prix"
+  />
+  <button (click)="valider()">valider</button>
 </div>
-<button (click)="hello()">click</button>
-<div>
-  <input [(ngModel)]="produit.nom" />
-  {{ message }}
-</div>
+@if (produitAAfficher) {
+<app-display-produit [produit]="produitAAfficher"></app-display-produit>
+}@else{
+{{ message }}
+}

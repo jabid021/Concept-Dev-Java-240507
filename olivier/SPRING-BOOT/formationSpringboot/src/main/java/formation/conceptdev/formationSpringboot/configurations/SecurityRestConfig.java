@@ -1,5 +1,7 @@
 package formation.conceptdev.formationSpringboot.configurations;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -8,6 +10,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
@@ -28,6 +32,17 @@ public class SecurityRestConfig {
 		//desactivation de la session utilisateur
 		http.sessionManagement(manager->manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 		
+		http.cors(c->{
+			CorsConfigurationSource source=request ->{
+				CorsConfiguration config=new CorsConfiguration();
+				
+				config.setAllowedOrigins(List.of("*"));
+				config.setAllowedMethods(List.of("*"));
+				config.setAllowedHeaders(List.of("*"));
+				return config;
+			};
+			c.configurationSource(source);
+		});
 		
 		http.httpBasic(Customizer.withDefaults());
 		

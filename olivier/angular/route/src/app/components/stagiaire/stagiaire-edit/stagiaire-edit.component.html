@@ -1,0 +1,42 @@
+<h1>edition stagiaire</h1>
+<div>
+  <div class="form-group">
+    <label for="prenom">prenom:</label>
+    <input id="prenom" [(ngModel)]="stagiaire.prenom" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="nom">nom:</label>
+    <input id="nom" [(ngModel)]="stagiaire.nom" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="email">email:</label>
+    <input
+      id="email"
+      type="email"
+      [(ngModel)]="stagiaire.email"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="filiere">filiere:</label>
+    <select
+      id="filiere"
+      [(ngModel)]="stagiaire.filiere"
+      class="form-control"
+      [compareWith]="compareFn"
+    >
+      @for(f of filieresObservable|async ;track f.id ){
+      <option [ngValue]="f">{{ f.libelle }}</option>
+      }
+    </select>
+  </div>
+  <div>
+    <button class="btn btn-outline-info" (click)="save()">enregistrer</button>
+    <a
+      routerLink="/stagiaire"
+      routerLinkActive="active"
+      class="btn btn-outline-warning"
+      >annuler</a
+    >
+  </div>
+</div>

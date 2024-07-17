@@ -1,26 +1,19 @@
 package formation.conceptdev.formationSpringboot.dto.request;
 
-import org.antlr.v4.runtime.misc.NotNull;
+
 
 public class StagiaireRequest {
-	private Integer id;
+
 	private String prenom;
 	private String nom;
 	private String email;
-	@NotNull
+
 	private Integer idFiliere;
 
 	public StagiaireRequest() {
 
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getPrenom() {
 		return prenom;

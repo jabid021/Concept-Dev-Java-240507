@@ -1,0 +1,28 @@
+<h1>liste des stagiaires</h1>
+<a routerLink="/stagiaire/edit" routerLinkActive="active" class="btn btn-link"
+  >nouveau stagiaire</a
+>
+<table class="table">
+  @for(s of stagiaires;track s.id) {
+  <tr>
+    <td>{{ s.id }}</td>
+    <td>{{ s.prenom }}</td>
+    <td>{{ s.nom }}</td>
+    <td>{{ s.email }}</td>
+    <td>{{ s.filiere?.libelle }}</td>
+    <td>
+      <a
+        routerLink="/stagiaire/edit/{{ s.id }}"
+        routerLinkActive="active"
+        class="btn btn-outline-primary"
+        >editer</a
+      >
+    </td>
+    <td>
+      <button (click)="delete(s.id!)" class="btn btn-outline-danger">
+        suprimer
+      </button>
+    </td>
+  </tr>
+  }
+</table>

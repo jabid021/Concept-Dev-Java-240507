@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Produit } from '../../../model/produit';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { DemoService } from '../../../services/demo.service';
 
 @Component({
   selector: 'app-produit',
@@ -15,4 +16,8 @@ export class ProduitComponent {
     new Produit('telephone', 500),
     { nom: 'avion', prix: 999999999 },
   ];
+
+  constructor(private demoSrv: DemoService) {
+    console.log(this.demoSrv.hello());
+  }
 }

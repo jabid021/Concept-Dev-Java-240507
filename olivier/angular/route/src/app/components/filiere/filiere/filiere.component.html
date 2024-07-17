@@ -1,0 +1,12 @@
+<table class="table">
+  <tbody>
+    @for(f of filieres;track f.id){
+    <tr>
+      <td>{{ f.id }}</td>
+      <td>{{ f.libelle }}</td>
+      <td>{{ f.debut }}</td>
+      <td>{{ f.fin }}</td>
+    </tr>
+    }
+  </tbody>
+</table>

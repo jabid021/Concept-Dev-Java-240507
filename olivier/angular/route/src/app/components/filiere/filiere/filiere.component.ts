@@ -13,6 +13,15 @@ export class FiliereComponent {
   filieres: Filiere[] = [];
 
   constructor(private filiereSrv: FiliereService) {
+    this.initFiliere();
+  }
+  delete(id: number) {
+    this.filiereSrv.delete(id).subscribe(() => {
+      this.initFiliere();
+    });
+  }
+
+  initFiliere() {
     this.filiereSrv.getAll().subscribe((filieres) => {
       this.filieres = filieres;
     });

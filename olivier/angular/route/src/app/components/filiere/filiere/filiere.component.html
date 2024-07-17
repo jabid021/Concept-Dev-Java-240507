@@ -6,6 +6,11 @@
       <td>{{ f.libelle }}</td>
       <td>{{ f.debut }}</td>
       <td>{{ f.fin }}</td>
+      <td>
+        <button class="btn btn-outline-danger" (click)="delete(f.id!)">
+          suprimer
+        </button>
+      </td>
     </tr>
     }
   </tbody>

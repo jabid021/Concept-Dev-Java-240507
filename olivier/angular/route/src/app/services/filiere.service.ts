@@ -15,5 +15,9 @@ export class FiliereService {
     );
   }
 
-  public delete
+  public delete(id: number): Observable<void> {
+    return this.httpClient.delete<void>(
+      'http://localhost:8080/demo/api/filiere/' + id
+    );
+  }
 }

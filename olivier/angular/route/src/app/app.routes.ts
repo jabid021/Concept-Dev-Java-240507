@@ -11,5 +11,6 @@ export const routes: Routes = [
   { path: 'produit/:nom', component: DetailComponent },
   { path: 'filiere', component: FiliereComponent },
   { path: 'filiere/edit', component: EditFiliereComponent },
+  { path: 'filiere/edit/:id', component: EditFiliereComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

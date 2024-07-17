@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FiliereService } from '../../../services/filiere.service';
 import { Filiere } from '../../../model/filiere';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-filiere',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, DatePipe],
   templateUrl: './filiere.component.html',
   styleUrl: './filiere.component.css',
 })

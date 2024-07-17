@@ -1,7 +1,7 @@
+import { Filiere } from './../model/filiere';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Filiere } from '../model/filiere';
 
 @Injectable({
   providedIn: 'root',
@@ -21,5 +21,13 @@ export class FiliereService {
 
   public create(filiere: Filiere): Observable<Filiere> {
     return this.httpClient.post<Filiere>(this.url, filiere);
+  }
+
+  public getById(id: number): Observable<Filiere> {
+    return this.httpClient.get<Filiere>(`${this.url}/${id}`);
+  }
+
+  public update(filiere: Filiere): Observable<Filiere> {
+    return this.httpClient.put<Filiere>(`${this.url}/${filiere.id}`, filiere);
   }
 }

@@ -7,8 +7,16 @@
     <tr>
       <td>{{ f.id }}</td>
       <td>{{ f.libelle }}</td>
-      <td>{{ f.debut }}</td>
-      <td>{{ f.fin }}</td>
+      <td>{{ f.debut | date : "dd/MM/yyyy" }}</td>
+      <td>{{ f.fin | date : "dd/MM/yyyy" }}</td>
+      <td>
+        <a
+          routerLink="/filiere/edit/{{ f.id }}"
+          routerLinkActive="active"
+          class="btn btn-outline-primary"
+          >editer</a
+        >
+      </td>
       <td>
         <button class="btn btn-outline-danger" (click)="delete(f.id!)">
           suprimer

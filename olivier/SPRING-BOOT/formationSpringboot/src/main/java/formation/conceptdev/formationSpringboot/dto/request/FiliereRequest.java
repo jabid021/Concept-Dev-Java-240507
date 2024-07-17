@@ -5,21 +5,13 @@ import java.time.LocalDate;
 import jakarta.validation.constraints.NotBlank;
 
 public class FiliereRequest {
-	private Integer id;
+
 	@NotBlank
 	private String libelle;
 	private LocalDate debut;
 	private LocalDate fin;
 
 	public FiliereRequest() {
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getLibelle() {

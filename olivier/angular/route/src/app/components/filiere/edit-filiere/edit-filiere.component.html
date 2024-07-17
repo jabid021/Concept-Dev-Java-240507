@@ -1,0 +1,35 @@
+<div>
+  <div class="form-group">
+    <label for="libelle">libelle:</label>
+    <input id="libelle" class="form-control" [(ngModel)]="filiere.libelle" />
+  </div>
+  <div class="form-group">
+    <label for="debut">date de debut:</label>
+    <input
+      id="debut"
+      type="date"
+      class="form-control"
+      [(ngModel)]="filiere.debut"
+    />
+  </div>
+  <div class="form-group">
+    <label for="fin">date de fin:</label>
+    <input
+      id="fin"
+      type="date"
+      class="form-control"
+      [(ngModel)]="filiere.fin"
+    />
+  </div>
+  <div>
+    <button class="btn btn-outline-primary" (click)="save()">
+      enregistrer
+    </button>
+    <a
+      routerLink="/filiere"
+      routerLinkActive="active"
+      class="btn btn-outline-warning"
+      >annuler</a
+    >
+  </div>
+</div>

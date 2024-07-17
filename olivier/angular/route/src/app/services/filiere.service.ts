@@ -7,17 +7,19 @@ import { Filiere } from '../model/filiere';
   providedIn: 'root',
 })
 export class FiliereService {
+  url = 'http://localhost:8080/demo/api/filiere';
+
   constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<Filiere[]> {
-    return this.httpClient.get<Filiere[]>(
-      'http://localhost:8080/demo/api/filiere'
-    );
+    return this.httpClient.get<Filiere[]>(this.url);
   }
 
   public delete(id: number): Observable<void> {
-    return this.httpClient.delete<void>(
-      'http://localhost:8080/demo/api/filiere/' + id
-    );
+    return this.httpClient.delete<void>(`${this.url}/${id}`);
+  }
+
+  public create(filiere: Filiere): Observable<Filiere> {
+    return this.httpClient.post<Filiere>(this.url, filiere);
   }
 }

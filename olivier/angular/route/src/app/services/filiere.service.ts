@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Filiere } from '../model/filiere';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +9,11 @@ import { Observable } from 'rxjs';
 export class FiliereService {
   constructor(private httpClient: HttpClient) {}
 
-  public getAll(): Observable<any> {
-    return this.httpClient.get('http://localhost:8080/demo/api/filiere');
+  public getAll(): Observable<Filiere[]> {
+    return this.httpClient.get<Filiere[]>(
+      'http://localhost:8080/demo/api/filiere'
+    );
   }
+
+  public delete
 }

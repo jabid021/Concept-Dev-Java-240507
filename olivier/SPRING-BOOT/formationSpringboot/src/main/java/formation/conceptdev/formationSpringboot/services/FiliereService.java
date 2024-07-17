@@ -8,12 +8,15 @@ import org.springframework.stereotype.Service;
 
 import formation.conceptdev.formationSpringboot.entities.Filiere;
 import formation.conceptdev.formationSpringboot.repositories.IDAOFiliere;
+import formation.conceptdev.formationSpringboot.repositories.IDAOStagiaire;
 
 @Service
 public class FiliereService {
 
 	@Autowired
 	IDAOFiliere daoFiliere;
+	@Autowired
+	IDAOStagiaire daoStagiaire;
 
 	public Filiere getByIdWithStagiaire(Integer id) {
 		if (id == null) {
@@ -52,13 +55,14 @@ public class FiliereService {
 		if (id == null) {
 			throw new RuntimeException("Impossible de supprimer une filiere sans id ???");
 		}
-		daoFiliere.deleteById(id);
+		delete(getById(id));
 	}
 
 	public void delete(Filiere filiere) {
 		if (filiere.getId() == null) {
 			throw new RuntimeException("Impossible de supprimer une filiere sans id ???");
 		}
-		deleteById(filiere.getId());
+		daoStagiaire.updateSetFiliereToNullByFiliere(filiere);
+		daoFiliere.delete(filiere);
 	}
 }

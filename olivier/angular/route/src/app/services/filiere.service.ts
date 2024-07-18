@@ -16,6 +16,12 @@ export class FiliereService {
     // return this.httpClient.get<Filiere[]>(this.url, {
     //   headers: { Authorization: auth },
     // });
+
+    //en utlisant le localStorage sous reserve que le token existe
+    // let auth = 'Basic ' + localStorage.getItem('token');
+    // return this.httpClient.get<Filiere[]>(this.url, {
+    //   headers: { Authorization: auth },
+    // });
     return this.httpClient.get<Filiere[]>(this.url);
   }
 

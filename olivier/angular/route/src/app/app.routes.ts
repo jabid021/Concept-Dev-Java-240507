@@ -6,6 +6,7 @@ import { FiliereComponent } from './components/filiere/filiere/filiere.component
 import { EditFiliereComponent } from './components/filiere/edit-filiere/edit-filiere.component';
 import { StagiaireComponent } from './components/stagiaire/stagiaire/stagiaire.component';
 import { StagiaireEditComponent } from './components/stagiaire/stagiaire-edit/stagiaire-edit.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
   { path: 'stagiaire', component: StagiaireComponent },
   { path: 'stagiaire/edit', component: StagiaireEditComponent },
   { path: 'stagiaire/edit/:id', component: StagiaireEditComponent },
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

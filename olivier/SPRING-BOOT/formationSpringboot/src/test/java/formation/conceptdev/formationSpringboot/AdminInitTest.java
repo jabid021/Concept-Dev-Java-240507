@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
+import formation.conceptdev.formationSpringboot.entities.Role;
 import formation.conceptdev.formationSpringboot.entities.Utilisateur;
 import formation.conceptdev.formationSpringboot.repositories.UtilisateurRepository;
 import jakarta.transaction.Transactional;
@@ -25,8 +26,11 @@ class AdminInitTest {
 	@Transactional
 	@Commit
 	@Disabled
-	void initAdminPassword() {
-		Utilisateur admin = utilisateurRepo.findByLogin("admin").get();
+	void initAdmin() {
+		Utilisateur admin = new Utilisateur();
+		admin.setLogin("admin");
+		admin.setPrenom("admin");
+		admin.setRole(Role.ROLE_ADMIN);
 		admin.setPassword(passwordEncoder.encode("admin"));
 		utilisateurRepo.save(admin);
 	}

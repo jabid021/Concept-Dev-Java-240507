@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,5 +13,24 @@ export class LoginComponent {
   login: string = '';
   password: string = '';
 
-  connect() {}
+  constructor(private authSrv: AuthService) {}
+
+  connect() {
+    this.authSrv.connect(this.login, this.password).subscribe({
+      //next=>on a une reponse
+      next: (utilisateur) => {
+        //on est sur que le couple login/password est correct
+        //je stocke le couple dans le localStorage
+        localStorage.setItem(
+          'token',
+          window.btoa(this.login + ':' + this.password)
+        );
+        localStorage.setItem('utilisateur', JSON.stringify(utilisateur));
+      },
+      //on a une erreur
+      error: (err) => {
+        console.debug(err);
+      },
+    });
+  }
 }

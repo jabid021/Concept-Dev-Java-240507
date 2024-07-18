@@ -12,6 +12,10 @@ export class FiliereService {
   constructor(private httpClient: HttpClient) {}
 
   public getAll(): Observable<Filiere[]> {
+    // let auth = `Basic ${window.btoa('admin:admin')}`;
+    // return this.httpClient.get<Filiere[]>(this.url, {
+    //   headers: { Authorization: auth },
+    // });
     return this.httpClient.get<Filiere[]>(this.url);
   }
 

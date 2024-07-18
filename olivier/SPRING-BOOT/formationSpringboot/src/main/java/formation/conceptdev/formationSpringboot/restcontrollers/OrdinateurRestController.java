@@ -18,10 +18,12 @@ import formation.conceptdev.formationSpringboot.dto.request.OrdinateurRequest;
 import formation.conceptdev.formationSpringboot.dto.response.OrdinateurResponse;
 import formation.conceptdev.formationSpringboot.entities.Ordinateur;
 import formation.conceptdev.formationSpringboot.services.OrdinateurService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 @RestController
 @RequestMapping("/api/ordinateur")
 @CrossOrigin(origins = "*")
+@SecurityRequirement(name="basicAuth")
 public class OrdinateurRestController {
 
 	@Autowired

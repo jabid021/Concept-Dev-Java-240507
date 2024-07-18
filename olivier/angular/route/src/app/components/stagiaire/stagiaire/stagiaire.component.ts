@@ -14,6 +14,7 @@ export class StagiaireComponent implements OnInit {
   stagiaires: Stagiaire[] = [];
   message = '';
   showMessage = false;
+  style = '';
 
   constructor(
     public stagiaireSrv: StagiaireService,
@@ -34,6 +35,7 @@ export class StagiaireComponent implements OnInit {
         }
       }
       this.showMessage = true;
+      this.style = 'alert-info';
     });
   }
 
@@ -47,6 +49,7 @@ export class StagiaireComponent implements OnInit {
     this.stagiaireSrv.delete(id).subscribe(() => {
       this.initStagiaires();
       this.message = `Stagiaire ${id} supprimé `;
+      this.style = 'alert-warning';
     });
   }
 }

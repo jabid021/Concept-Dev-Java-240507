@@ -26,10 +26,12 @@ import formation.conceptdev.formationSpringboot.dto.response.StagiaireResponse;
 import formation.conceptdev.formationSpringboot.entities.Stagiaire;
 import formation.conceptdev.formationSpringboot.services.FiliereService;
 import formation.conceptdev.formationSpringboot.services.StagiaireService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/stagiaire")
+@SecurityRequirement(name="basicAuth")
 public class StagiaireRestController {
 
 	@Autowired

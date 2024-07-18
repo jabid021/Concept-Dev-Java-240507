@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -26,7 +27,8 @@ public class SecurityRestConfig {
 
 		http.authorizeHttpRequests(auth -> {
 			auth.requestMatchers("/swagger-ui/**","/swagger-ui.html","/v3/**").permitAll()
-				.anyRequest().authenticated();
+				.requestMatchers(HttpMethod.GET).authenticated()
+				.anyRequest().hasAnyAuthority("ADMIN");
 		});
 
 		//desactivation de la session utilisateur

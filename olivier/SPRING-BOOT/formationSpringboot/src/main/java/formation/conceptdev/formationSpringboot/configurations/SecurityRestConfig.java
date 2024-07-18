@@ -26,7 +26,7 @@ public class SecurityRestConfig {
 
 		http.authorizeHttpRequests(auth -> {
 			auth.requestMatchers("/swagger-ui/**","/swagger-ui.html","/v3/**").permitAll()
-				.anyRequest().permitAll();
+				.anyRequest().authenticated();
 		});
 
 		//desactivation de la session utilisateur

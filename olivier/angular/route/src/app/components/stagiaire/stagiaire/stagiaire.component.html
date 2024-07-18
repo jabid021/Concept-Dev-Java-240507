@@ -2,6 +2,11 @@
 <a routerLink="/stagiaire/edit" routerLinkActive="active" class="btn btn-link"
   >nouveau stagiaire</a
 >
+@if(showMessage){
+<div class="alert alert-info">
+  {{ message }}
+</div>
+}
 <table class="table">
   @for(s of stagiaires;track s.id) {
   <tr>

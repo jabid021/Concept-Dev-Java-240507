@@ -10,6 +10,7 @@ import { StagiaireEditComponent } from './components/stagiaire/stagiaire-edit/st
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { anonymousGuard } from './guards/anonymous.guard';
+import { InscriptionComponent } from './components/inscription/inscription.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -45,5 +46,6 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   { path: 'login', component: LoginComponent, canActivate: [anonymousGuard] },
+  { path: 'inscription', component: InscriptionComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

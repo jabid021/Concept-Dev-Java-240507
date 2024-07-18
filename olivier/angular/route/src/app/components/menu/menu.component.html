@@ -11,10 +11,13 @@
     >stagiaire</a
   >
   <button (click)="logout()" class="btn btn-link">deconnexion</button>
-  <span>bonjour {{login}}</span>
+  <span>bonjour {{ login }}</span>
   }@else {
   <a routerLink="/login" routerLinkActive="active" class="btn btn-link"
     >login</a
+  >
+  <a routerLink="/inscription" routerLinkActive="active" class="btn btn-link"
+    >inscription</a
   >
   }
 </nav>

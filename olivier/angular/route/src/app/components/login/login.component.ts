@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   login: string = '';
   password: string = '';
+  error = false;
 
   constructor(private authSrv: AuthService, private router: Router) {}
 
@@ -27,10 +28,12 @@ export class LoginComponent {
           window.btoa(this.login + ':' + this.password)
         );
         localStorage.setItem('utilisateur', JSON.stringify(utilisateur));
+        this.error = false;
         this.router.navigateByUrl('/home');
       },
       //on a une erreur
       error: (err) => {
+        this.error = true;
         console.debug(err);
       },
     });

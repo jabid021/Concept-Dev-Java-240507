@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
   login: string = '';
   password: string = '';
 
-  constructor(private authSrv: AuthService) {}
+  constructor(private authSrv: AuthService, private router: Router) {}
 
   connect() {
     this.authSrv.connect(this.login, this.password).subscribe({
@@ -26,6 +27,7 @@ export class LoginComponent {
           window.btoa(this.login + ':' + this.password)
         );
         localStorage.setItem('utilisateur', JSON.stringify(utilisateur));
+        this.router.navigateByUrl('/home');
       },
       //on a une erreur
       error: (err) => {
